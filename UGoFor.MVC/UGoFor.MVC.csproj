@@ -148,7 +148,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Content\img\.gitkeep" />
-    <Content Include="Views\Home\Ajax.cshtml" />
+    <Content Include="Views\Home\Static.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
