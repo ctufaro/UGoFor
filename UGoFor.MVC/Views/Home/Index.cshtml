@@ -20,6 +20,8 @@
     <!--<p><a class="popup-modal-dismiss" href="#">Cancel</a></p>-->
 </div>
 
+<p id="demo"></p>
+
 <div class="row page">
     <header id="main_header">
         <nav>
@@ -102,9 +104,6 @@
 
         ajaxit();
 
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-
         $('.popup-modal').magnificPopup({
             type: 'inline',
             preloader: false,
@@ -122,4 +121,21 @@
         });
 
     });
+</script>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    }
 </script>
