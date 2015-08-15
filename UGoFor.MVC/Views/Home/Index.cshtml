@@ -19,6 +19,10 @@
     <!--<p><a class="popup-modal-dismiss" href="#">Cancel</a></p>-->
 </div>
 
+<div id="loadingDiv" class="white-popup-block mfp-hide">
+    <h1>Loading...</h1>
+</div>
+
 <div class="row page">
     <header id="main_header">
         <nav>
@@ -82,11 +86,6 @@
                     '.avatar@src': 'post.ProfilePicURL', //the dot selector, means the current node (here a LI),
                     '+.arrow_box': 'post.SmallComment',
                     '.cover@src': 'post.PostedImage',
-                    //'.collection': {
-                    //    'pimage<-post.SuggestImages': {
-                    //        '.cover@src': 'pimage.Url'
-                    //    }
-                    //},
                     '.day': 'post.TimePosted',
                     '.big-comment p': 'post.BigComment'
                 }
@@ -119,11 +118,18 @@
 <script>
     $(function () {
 
+        var $loading = $('#loadingDiv').hide();
+        $(document)
+          .ajaxStart(function () {
+              $loading.show();
+          })
+          .ajaxStop(function () {
+              $loading.hide();
+          });
+
         snapHtml = $('.posts').html();
 
-        //console.log(snapHtml);
-
-        ajaxit();        
+        ajaxit();
 
         $('.popup-modal').magnificPopup({
             type: 'inline',
@@ -140,6 +146,7 @@
         $("#btnPost").click(function () {
             sendPost();
         });
+
 
         getLocation();
 
