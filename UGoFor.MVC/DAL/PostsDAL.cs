@@ -68,11 +68,13 @@ namespace UGoFor.MVC.DAL
 
         public void InsertPost(PostsModel sentPost)
         {
+            string[] sampleFoods = new string[] { "burger.jpg", "coffee.jpg", "nuggets.jpg", "dogfood.jpg" };
+
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@USERID", new Random().Next(1,4)),
                 new SqlParameter("@SHORTCOMMENT", sentPost.SmallComment),
-                new SqlParameter("@IMAGEURL", "http://ugofor.azurewebsites.net/Content/img/ugofor.png"),
+                new SqlParameter("@IMAGEURL", "http://ugofor.azurewebsites.net/Content/img/" + sampleFoods[new Random().Next(0,3)]),
                 new SqlParameter("@COMMENT", sentPost.BigComment),
                 new SqlParameter("@LOCATION", "TESTING"),
             };
