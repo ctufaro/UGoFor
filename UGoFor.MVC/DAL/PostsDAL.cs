@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using UGoFor.MVC.Models;
+
+namespace UGoFor.MVC.DAL
+{
+    public class PostsDAL : BaseDAL
+    {
+        public PostsDAL(string connection = ""): base((string.IsNullOrEmpty(connection)) ? "" : connection)
+        {
+        }
+
+        public List<PostsModel> SelectAllUsersPosts()
+        {
+            List<PostsModel> usersPosts = ExecuteSPReturnData<PostsModel>("SelectAllUsersPosts");
+            return usersPosts;
+        }
+
+        public List<PostsModel> SelectAllSampleUsersPosts()
+        {
+            List<PostsModel> lp = new List<PostsModel>();
+
+            lp.Add(new PostsModel
+            {
+                PostId = 0,
+                ProfilePicURL = "../Content/img/profile2.jpg",
+                SmallComment = "Chicken Cutlet on a hero with American, extra mayo, lettuce, S&P",
+                TimePosted = "3d",
+                PostedImage = "../Content/img/burger.jpg",
+                BigComment = "From the deli on 51st between 6th and 7th avenue, across from UBS."
+            });
+
+            lp.Add(new PostsModel
+            {
+                PostId = 1,
+                ProfilePicURL = "../Content/img/profile.jpg",
+                SmallComment = "Grande Iced Black Eye",
+                TimePosted = "6d",
+                PostedImage = "../Content/img/coffee.jpg",
+                BigComment = "Any Starbucks in the Midtown area with a wait less than 30 minutes"
+            });
+
+            lp.Add(new PostsModel
+            {
+                PostId = 2,
+                ProfilePicURL = "../Content/img/profile3.jpg",
+                SmallComment = "Chicken Nuggets, Cheese Slices, Almond Milk!",
+                TimePosted = "2d",
+                PostedImage = "../Content/img/nuggets.jpg",
+                BigComment = "Specifically Dinosaur chicken nuggets and the almond milk best be cold."
+            });
+
+            lp.Add(new PostsModel
+            {
+                PostId = 3,
+                ProfilePicURL = "../Content/img/profile4.jpg",
+                SmallComment = "Rosie's Nuggets and my own puke",
+                TimePosted = "2d",
+                PostedImage = "../Content/img/dogfood.jpg",
+                BigComment = "Hard boiled eggs (the yolks), sesame seed bagels, dental floss, a bird."
+            });
+
+            return lp;
+        }
+
+        public void InsertPost(PostsModel sentPost)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", new Random().Next(1,4)),
+                new SqlParameter("@SHORTCOMMENT", sentPost.SmallComment),
+                new SqlParameter("@IMAGEURL", "http://ugofor.azurewebsites.net/Content/img/ugofor.png"),
+                new SqlParameter("@COMMENT", sentPost.BigComment),
+                new SqlParameter("@LOCATION", "TESTING"),
+            };
+            ExecuteSPNonReturnData("InsertUserPost", parameters);
+        }
+    }
+}

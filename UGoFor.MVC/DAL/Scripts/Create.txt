@@ -1,0 +1,14 @@
+﻿
+User-Agent: Fiddler
+Content-Type: application/json; charset=utf-8
+Host: localhost:26684
+Content-Length: 163
+
+{
+   "PostId ":1,
+   "ProfilePicURL ":"xxx",
+   "SmallComment":"SmallComment",
+   "TimePosted":"xxx",
+   "PostedImage":"xxx",
+   "BigComment":"BigComment"
+}
