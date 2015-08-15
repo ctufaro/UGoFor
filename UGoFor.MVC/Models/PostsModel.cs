@@ -15,6 +15,7 @@ namespace UGoFor.MVC.Models
         public string TimePosted { get; set; }
         public string PostedImage { get; set; }
         public string BigComment { get; set; }
+        public string Location { get; set; }
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -25,6 +26,7 @@ namespace UGoFor.MVC.Models
             postsModel.SmallComment = dr["ShortComment"] is DBNull ? null : dr["ShortComment"].ToString();
             postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
             postsModel.TimePosted = dr["Created"] is DBNull ? null : dr["Created"].ToString();
+            postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
             return postsModel;
         }
 

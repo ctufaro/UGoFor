@@ -20,8 +20,6 @@
     <!--<p><a class="popup-modal-dismiss" href="#">Cancel</a></p>-->
 </div>
 
-<p id="demo"></p>
-
 <div class="row page">
     <header id="main_header">
         <nav>
@@ -54,6 +52,16 @@
 </div>
 
 <script>   
+    var lat;
+    var lon;
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+        }
+    }
+
     function ajaxit() {
         $.ajax({
             type: "GET",
@@ -91,7 +99,7 @@
                 url: "../api/posts",
                 dataType: 'Content-Type: application/json',
                 async: false,
-                data: {"PostID": 1, "ProfilePicURL": "xxx", "SmallComment": $("#txtSmallComment").val(), "TimePosted": "xxx", "PostedImage": "xxx", "BigComment": $("#txtBigComment").val() },
+                data: {"PostID": 1, "ProfilePicURL": "xxx", "SmallComment": $("#txtSmallComment").val(), "TimePosted": "xxx", "PostedImage": "xxx", "BigComment": $("#txtBigComment").val(), "Location" : "lat:"+lat+" lon:"+lon },
                 success: function () {
                     $('#btnCancel').trigger('click');
                 }
@@ -103,6 +111,8 @@
     $(function () {
 
         ajaxit();
+
+        getLocation();
 
         $('.popup-modal').magnificPopup({
             type: 'inline',
@@ -124,15 +134,7 @@
 </script>
 
 <script>
-    var x = document.getElementById("demo");
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
 
     function showPosition(position) {
         x.innerHTML = "Latitude: " + position.coords.latitude +

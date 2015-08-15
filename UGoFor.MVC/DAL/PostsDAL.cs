@@ -76,7 +76,7 @@ namespace UGoFor.MVC.DAL
                 new SqlParameter("@SHORTCOMMENT", sentPost.SmallComment),
                 new SqlParameter("@IMAGEURL", "http://ugofor.azurewebsites.net/Content/img/" + sampleFoods[new Random().Next(0,3)]),
                 new SqlParameter("@COMMENT", sentPost.BigComment),
-                new SqlParameter("@LOCATION", "TESTING"),
+                new SqlParameter("@LOCATION", sentPost.Location),
             };
             ExecuteSPNonReturnData("InsertUserPost", parameters);
         }
