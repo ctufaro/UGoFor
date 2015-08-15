@@ -52,14 +52,17 @@
 </div>
 
 <script>   
-    var lat;
-    var lon;
+    var coordinates
 
     function getLocation() {
         if (navigator.geolocation) {
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-        }
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } 
+    }
+
+    function showPosition(position) {
+        coordinates = ("Latitude: " + position.coords.latitude +
+        " Longitude: " + position.coords.longitude);
     }
 
     function ajaxit() {
@@ -68,7 +71,7 @@
             url: "../api/posts",
             error: function (xhr, statusText) { alert("Error: " + statusText); },
             success: function (msg) { runit(msg); }
-        }
+            }
 		);
     }
 
@@ -99,7 +102,11 @@
                 url: "../api/posts",
                 dataType: 'Content-Type: application/json',
                 async: false,
-                data: {"PostID": 1, "ProfilePicURL": "xxx", "SmallComment": $("#txtSmallComment").val(), "TimePosted": "xxx", "PostedImage": "xxx", "BigComment": $("#txtBigComment").val(), "Location" : "lat:"+lat+" lon:"+lon },
+                data: {
+                    "PostID": 1, "ProfilePicURL": "xxx", "SmallComment": $("#txtSmallComment").val(),
+                    "TimePosted": "xxx", "PostedImage": "xxx", "BigComment": $("#txtBigComment").val(),
+                    "Location": coordinates
+                },
                 success: function () {
                     $('#btnCancel').trigger('click');
                 }
@@ -110,9 +117,7 @@
 <script>
     $(function () {
 
-        ajaxit();
-
-        getLocation();
+        ajaxit();        
 
         $('.popup-modal').magnificPopup({
             type: 'inline',
@@ -130,14 +135,8 @@
             sendPost();
         });
 
+        getLocation();
+
     });
 </script>
 
-<script>
-
-
-    function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-    }
-</script>
