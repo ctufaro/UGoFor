@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "UGoFor | What Could U Go For? ";
+}
+
+@Scripts.Render("~/Content/js/jquery.magnific-popup.min.js")
+@Styles.Render("~/Content/css/magnific-popup-modal.css")
+
+<div id="test-modal" class="white-popup-block mfp-hide">
+    <h1>UGoFor?</h1>
+    <p>
+        What food could you go for?
+    </p>
+    Food:<br><input type="text" name="food"><br>
+    Description:<br><input type="text" name="description"><br><br>
+    <p>
+        <input type="button" name="btnPost" value="Post">&nbsp;&nbsp;
+        <input type="button" name="btnPost" value="Cancel" class="popup-modal-dismiss">
+    </p>
+    <!--<p><a class="popup-modal-dismiss" href="#">Cancel</a></p>-->
+</div>
+
+<div class="row page">
+    <header id="main_header">
+        <nav>
+        <h1><a href="#">UGoFor</a></h1>
+        <div class="pull-right">
+            <span class="icon_nav">
+                <a href="#" class="home-icon"></a>
+                <a href="#test-modal" class="post-icon popup-modal"></a>
+                <a href="#" class="genie-icon"></a>
+            </span>
+        </div>
+        </nav>
+    </header>
+    <article id="post">
+        <img class="avatar" src="Content/img/profile2.jpg" style="float: left" />
+        <div class="arrow_box">
+            Chicken Cutlet on a hero with American, extra mayo, lettuce, S&P
+            <span class="day pull-right">3d</span>
+        </div>
+        <img src="Content/img/burger.jpg" class="cover">
+        <div class="big-comment">
+            <p>From the deli on 51st between 6th and 7th avenue, across from UBS.</p>
+            <span class="pull-right">
+                <a href="#" class="read-more"></a>
+                <a href="#" class="heart"></a>
+            </span>
+        </div>
+    </article>
+    <article id="post">
+        <img class="avatar" src="Content/img/profile.jpg" style="float: left" />
+        <div class="arrow_box">
+            Grande Iced Black Eye
+            <span class="day pull-right">6d</span>
+        </div>
+        <img src="Content/img/coffee.jpg" class="cover">
+        <div class="big-comment">
+            <p>Any Starbucks in the Midtown area with a wait less than 30 minutes</p>
+            <span class="pull-right">
+                <a href="#" class="read-more"></a>
+                <a href="#" class="heart"></a>
+            </span>
+        </div>
+    </article>
+    <article id="post">
+        <img class="avatar" src="Content/img/profile3.jpg" style="float: left" />
+        <div class="arrow_box">
+            Chicken Nuggets, Cheese Slices, Almond Milk!
+            <span class="day pull-right">2d</span>
+        </div>
+        <img src="Content/img/nuggets.jpg" class="cover">
+        <div class="big-comment">
+            <p>Specifically Dinosaur chicken nuggets and the almond milk best be cold.</p>
+            <span class="pull-right">
+                <a href="#" class="read-more"></a>
+                <a href="#" class="heart"></a>
+            </span>
+        </div>
+    </article>
+    <article id="post">
+        <img class="avatar" src="Content/img/profile4.jpg" style="float: left" />
+        <div class="arrow_box">
+            Rosie's Nuggets and my own puke
+            <span class="day pull-right">2d</span>
+        </div>
+        <img src="Content/img/dogfood.jpg" class="cover">
+        <div class="big-comment">
+            <p>Hard boiled eggs (the yolks), sesame seed bagels, dental floss, a bird.</p>
+            <span class="pull-right">
+                <a href="#" class="read-more"></a>
+                <a href="#" class="heart"></a>
+            </span>
+        </div>
+    </article>
+</div>
+
+<script>
+    $(function () {
+        $('.popup-modal').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            focus: '#username',
+            modal: true
+        });
+        $(document).on('click', '.popup-modal-dismiss', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });
+    });
+</script>

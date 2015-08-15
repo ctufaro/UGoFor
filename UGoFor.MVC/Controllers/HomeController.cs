@@ -13,7 +13,7 @@ namespace UGoFor.MVC.Controllers
             return View();
         }
 
-        public ActionResult Ajax()
+        public ActionResult Static()
         {
             return View();
         }
