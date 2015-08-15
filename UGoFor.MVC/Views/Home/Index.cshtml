@@ -52,7 +52,8 @@
 </div>
 
 <script>   
-    var coordinates
+    var coordinates;
+    var snapHtml;
 
     function getLocation() {
         if (navigator.geolocation) {
@@ -109,6 +110,8 @@
                 },
                 success: function () {
                     $('#btnCancel').trigger('click');
+                    $('.posts').html(snapHtml);
+                    ajaxit();
                 }
             })
     }
@@ -116,6 +119,10 @@
 
 <script>
     $(function () {
+
+        snapHtml = $('.posts').html();
+
+        //console.log(snapHtml);
 
         ajaxit();        
 
