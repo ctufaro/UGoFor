@@ -12,19 +12,19 @@ function showPosition(position) {
     " Longitude: " + position.coords.longitude);
 }
 
-function ajaxit(snapHtml, classSection) {
+function ajaxit(snapHtml) {
     savedHtml = snapHtml;
 
     $.ajax({
         type: "GET",
         url: "../api/posts",
         error: function (xhr, statusText) { alert("Error: " + statusText); },
-        success: function (msg) { runit(msg, classSection); }
-    }
+        success: function (msg) { runit(msg); }
+        }
     );
 }
 
-function runit(data, classSection) {
+function runit(data) {
     var directive = {
         'article': {
             'post<-': { //for each entry in posts name the element 'post'
@@ -36,7 +36,7 @@ function runit(data, classSection) {
             }
         }
     };
-    $p(classSection).render(data, directive);
+    $p('.posts').render(data, directive);
 }
 
 function sendPost(smallComment, bigComment) { //
@@ -54,7 +54,7 @@ function sendPost(smallComment, bigComment) { //
             success: function () {
                 $('#btnCancel').trigger('click');
                 $('.posts').html(savedHtml);
-                ajaxit();
+                ajaxit(savedHtml, '.posts');
             }
         })
 }
