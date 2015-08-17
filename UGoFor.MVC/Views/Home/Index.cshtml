@@ -3,6 +3,7 @@
 }
 
 @Scripts.Render("~/Content/js/pure.js")
+@Scripts.Render("~/Content/js/functions.js")
 @Scripts.Render("~/Content/js/jquery.magnific-popup.min.js")
 @Styles.Render("~/Content/css/magnific-popup-modal.css")
 
@@ -16,11 +17,6 @@
         <a href="#" class="button success" id="btnPost">Post</a>&nbsp;&nbsp;
         <a href="#" class="button popup-modal-dismiss" id="btnCancel">Cancel</a>
     </p>
-    <!--<p><a class="popup-modal-dismiss" href="#">Cancel</a></p>-->
-</div>
-
-<div id="loadingDiv" class="white-popup-block mfp-hide">
-    <h1>Loading....</h1>
 </div>
 
 <div class="row page">
@@ -54,83 +50,16 @@
     </span>
 </div>
 
-<script>   
-    var coordinates;
-    var snapHtml;
-
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } 
-    }
-
-    function showPosition(position) {
-        coordinates = ("Latitude: " + position.coords.latitude +
-        " Longitude: " + position.coords.longitude);
-    }
-
-    function ajaxit() {
-        $.ajax({
-            type: "GET",
-            url: "../api/posts",
-            error: function (xhr, statusText) { alert("Error: " + statusText); },
-            success: function (msg) { runit(msg); }
-            }
-		);
-    }
-
-    function runit(data) {
-        var directive = {
-            'article': {
-                'post<-': { //for each entry in posts name the element 'post'
-                    '.avatar@src': 'post.ProfilePicURL', //the dot selector, means the current node (here a LI),
-                    '+.arrow_box': 'post.SmallComment',
-                    '.cover@src': 'post.PostedImage',
-                    '.day': 'post.TimePosted',
-                    '.big-comment p': 'post.BigComment'
-                }
-            }
-        };
-        $p('.posts').render(data, directive);
-    }
-
-    function sendPost() {
-        $.ajax
-            ({
-                type: "POST",
-                url: "../api/posts",
-                dataType: 'Content-Type: application/json',
-                async: false,
-                data: {
-                    "PostID": 1, "ProfilePicURL": "xxx", "SmallComment": $("#txtSmallComment").val(),
-                    "TimePosted": "xxx", "PostedImage": "xxx", "BigComment": $("#txtBigComment").val(),
-                    "Location": coordinates
-                },
-                success: function () {
-                    $('#btnCancel').trigger('click');
-                    $('.posts').html(snapHtml);
-                    ajaxit();
-                }
-            })
-    }
-</script> 
-
 <script>
     $(function () {
 
-        var $loading = $('#loadingDiv').hide();
-        $(document)
-          .ajaxStart(function () {
-              $loading.show();
-          })
-          .ajaxStop(function () {
-              $loading.hide();
-          });
+        //pure template engine and ajax call
+        ajaxit($('.posts').html(), '.posts');
 
-        snapHtml = $('.posts').html();
+        //getting users coordinates
+        getLocation();
 
-        ajaxit();
-
+        //wiring up post pop-up
         $('.popup-modal').magnificPopup({
             type: 'inline',
             preloader: false,
@@ -138,17 +67,16 @@
             modal: true
         });
 
+        //wiring up pop-up close button
         $(document).on('click', '.popup-modal-dismiss', function (e) {
             e.preventDefault();
             $.magnificPopup.close();
         });
 
+        //wiring up pop-up post button
         $("#btnPost").click(function () {
-            sendPost();
-        });
-
-
-        getLocation();
+            sendPost($("#txtSmallComment").val(),$("#txtBigComment").val());
+        });        
 
     });
 </script>

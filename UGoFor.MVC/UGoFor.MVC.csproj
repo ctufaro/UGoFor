@@ -139,6 +139,7 @@
     <Content Include="Content\img\profile3.jpg" />
     <Content Include="Content\img\profile4.jpg" />
     <Content Include="Content\img\ugofor.png" />
+    <Content Include="Content\js\functions.js" />
     <Content Include="Content\js\jquery.magnific-popup.min.js" />
     <Content Include="Content\js\pure.js" />
     <Content Include="DAL\Scripts\Create.txt" />
