@@ -53,7 +53,6 @@ function sendPost(smallComment, bigComment) { //
             },
             success: function () {
                 $('#btnCancel').trigger('click');
-                $('.posts').html(savedHtml);
                 ajaxit(savedHtml, '.posts');
             }
         })
