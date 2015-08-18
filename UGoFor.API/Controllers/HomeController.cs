@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace UGoFor.MVC.Controllers
+namespace UGoFor.API.Controllers
 {
     public class HomeController : Controller
     {

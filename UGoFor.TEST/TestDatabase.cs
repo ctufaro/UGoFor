@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using UGoFor.MVC.DAL;
-using UGoFor.MVC.Models;
+using UGoFor.API.DAL;
+using UGoFor.API.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UGoFor.TEST

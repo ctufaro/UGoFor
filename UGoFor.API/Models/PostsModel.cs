@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using UGoFor.MVC.DAL;
+using UGoFor.API.DAL;
 
-namespace UGoFor.MVC.Models
+namespace UGoFor.API.Models
 {
     public class PostsModel : IFromDataReader<PostsModel>
     {

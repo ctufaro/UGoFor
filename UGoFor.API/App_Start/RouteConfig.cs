@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace UGoFor.MVC{
+namespace UGoFor.API{
     public static class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using ExtensionMethods;
 
-namespace UGoFor.MVC.DAL
+namespace UGoFor.API.DAL
 {
     public class BaseDAL
     {

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Http;
 
-namespace UGoFor.MVC
+namespace UGoFor.API
 {
     public class Global : System.Web.HttpApplication
     {

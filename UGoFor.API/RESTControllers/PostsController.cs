@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using UGoFor.MVC.Models;
+using UGoFor.API.Models;
 
-namespace UGoFor.MVC.Controllers
+namespace UGoFor.API.Controllers
 {
     public class PostsController : ApiController
     {

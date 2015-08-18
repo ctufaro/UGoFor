@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Headers;
 
-namespace UGoFor.MVC
+namespace UGoFor.API
 {
     public static class WebApiConfig
     {

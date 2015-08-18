@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UGoFor.MVC\UGoFor.MVC.csproj">
+    <ProjectReference Include="..\UGoFor.API\UGoFor.API.csproj">
       <Project>{de0c3227-edc5-4915-8761-c7859efd2f76}</Project>
-      <Name>UGoFor.MVC</Name>
+      <Name>UGoFor.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

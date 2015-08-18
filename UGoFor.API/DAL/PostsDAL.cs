@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using UGoFor.MVC.Models;
+using UGoFor.API.Models;
 
-namespace UGoFor.MVC.DAL
+namespace UGoFor.API.DAL
 {
     public class PostsDAL : BaseDAL
     {
