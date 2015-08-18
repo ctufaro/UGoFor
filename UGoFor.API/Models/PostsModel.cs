@@ -22,9 +22,9 @@ namespace UGoFor.API.Models
             PostsModel postsModel = new PostsModel();
             postsModel.BigComment = dr["Comment"] is DBNull ? null : dr["Comment"].ToString();
             postsModel.PostId = dr["PostId"] is DBNull ? null : dr["PostId"] as Int32?;
-            postsModel.ProfilePicURL = dr["ProfileUrl"] is DBNull ? null : dr["ProfileUrl"].ToString();
+            postsModel.ProfilePicURL = dr["ProfileUrl"] is DBNull ? null : dr["ProfileUrl"].ToString().Replace("ugofor.", "ugoforweb.").Replace("Content/", "");
             postsModel.SmallComment = dr["ShortComment"] is DBNull ? null : dr["ShortComment"].ToString();
-            postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
+            postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString().Replace("ugofor.", "ugoforweb.").Replace("Content/", "");
             postsModel.TimePosted = dr["Created"] is DBNull ? null : dr["Created"].ToString();
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
             return postsModel;
