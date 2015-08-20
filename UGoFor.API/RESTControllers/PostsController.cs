@@ -13,6 +13,7 @@ namespace UGoFor.API.Controllers
         // GET: api/Posts
         public IEnumerable<PostsModel> Get()
         {
+            System.Threading.Thread.Sleep(5000);
             return new PostsModel().SelectAllUsersPosts();
         }
 
