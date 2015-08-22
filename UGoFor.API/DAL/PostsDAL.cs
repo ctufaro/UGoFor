@@ -74,7 +74,7 @@ namespace UGoFor.API.DAL
             {
                 new SqlParameter("@USERID", new Random(Guid.NewGuid().GetHashCode()).Next(1,4)),
                 new SqlParameter("@SHORTCOMMENT", sentPost.SmallComment),
-                new SqlParameter("@IMAGEURL", "http://ugoforweb.azurewebsites.net/img/" + sampleFoods[new Random(Guid.NewGuid().GetHashCode()).Next(0,3)]),
+                new SqlParameter("@IMAGEURL", "http://ugoforweb.azurewebsites.net/www/img/" + sampleFoods[new Random(Guid.NewGuid().GetHashCode()).Next(0,3)]),
                 new SqlParameter("@COMMENT", sentPost.BigComment),
                 new SqlParameter("@LOCATION", sentPost.Location),
             };
