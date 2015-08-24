@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "UGoFor | What Could U Go For?";
+}
+
+@Scripts.Render("~/Content/js/pure.js")
+@Scripts.Render("~/Content/js/functions.js")
+@Scripts.Render("~/Content/js/jquery.magnific-popup.min.js")
+@Styles.Render("~/Content/css/magnific-popup-modal.css")
+
+<div id="test-modal" class="white-popup-block mfp-hide">
+    <h1>UGoFor?</h1>
+    <p>
+        What food could you go for?
+    </p>
+    Food:<br><input type="text" id="txtSmallComment" name="food" style="width:100%;height:40px;font-size:16px;"><br>
+    Place to get it:<br><input type="text" id="txtBigComment" name="description" style="width:100%;height:40px;font-size:16px;"><br><br>    <p>
+        <a href="#" class="button success" id="btnPost">Post</a>&nbsp;&nbsp;
+        <a href="#" class="button popup-modal-dismiss" id="btnCancel">Cancel</a>
+    </p>
+</div>
+
+<div class="row page">
+    <header id="main_header">
+        <nav>
+            <h1><a href="#">UGoFor</a></h1>
+            <div class="pull-right">
+                <span class="icon_nav">
+                    <a href="#" class="home-icon"></a>
+                    <a href="#test-modal" class="post-icon popup-modal"></a>
+                    <a href="#" class="genie-icon"></a>
+                </span>
+            </div>
+        </nav>
+    </header>
+    <span class="posts">
+        <article id="post">
+            <img class="avatar" src="" style="float: left" />
+            <div class="arrow_box">
+                <span class="day pull-right"></span>
+            </div>
+            <span class="collection"><img class="cover" src=""></span>
+            <div class="big-comment">
+                <p></p>
+                <span class="pull-right">
+                    <a href="#" class="read-more"></a>
+                    <a href="#" class="heart"></a>
+                </span>
+            </div>
+        </article>
+    </span>
+</div>
+
+<script>
+    $(function () {
+
+        //pure template engine and ajax call
+        ajaxit($('.posts').html());
+
+        //getting users coordinates
+        getLocation();
+
+        //wiring up post pop-up
+        $('.popup-modal').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            focus: '#username',
+            modal: true
+        });
+
+        //wiring up pop-up close button
+        $(document).on('click', '.popup-modal-dismiss', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });
+
+        //wiring up pop-up post button
+        $("#btnPost").click(function () {
+            sendPost($("#txtSmallComment").val(),$("#txtBigComment").val());
+        });        
+
+    });
+</script>
+
