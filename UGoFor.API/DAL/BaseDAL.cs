@@ -15,7 +15,15 @@ namespace UGoFor.API.DAL
 
         public BaseDAL(string connection = "")
         {
-            this.ConnectionString = (string.IsNullOrEmpty(connection)) ? ConfigurationManager.ConnectionStrings["UGoForDBConnection"].ConnectionString : connection;
+            //stupid hack cause transforms arent working
+            if (bool.Parse(ConfigurationManager.AppSettings["OnAzure"])) 
+            { 
+                this.ConnectionString = (string.IsNullOrEmpty(connection)) ? ConfigurationManager.ConnectionStrings["UGoForDBConnection"].ConnectionString : connection;
+            }
+            else
+            {
+                this.ConnectionString = System.IO.File.ReadAllText(@"C:\temp\connection.txt");
+            }
         }
 
         public List<T> ExecuteSPReturnData<T>(string storedProcedureName, SqlParameter[] parameters = null) where T : IFromDataReader<T>
