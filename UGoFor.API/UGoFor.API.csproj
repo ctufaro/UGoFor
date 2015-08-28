@@ -198,6 +198,7 @@
     <Compile Include="RESTControllers\PostsController.cs" />
     <Compile Include="Extensions\ExtensionMethods.cs" />
     <Compile Include="RESTControllers\RegisterController.cs" />
+    <Compile Include="RESTControllers\UDIDController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
