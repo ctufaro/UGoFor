@@ -34,7 +34,7 @@ namespace UGoFor.API.RESTControllers
             SqlParameter[] sqlParams = new SqlParameter[] { new SqlParameter("@DATA", raw) };
             new BaseDAL().ExecuteSPNonReturnData("InsertUDID", sqlParams);
             var response = Request.CreateResponse(HttpStatusCode.Moved);
-            response.Headers.Location = new Uri("http://www.google.com");
+            response.Headers.Location = new Uri("/home/index");
             return response;
         }
 
