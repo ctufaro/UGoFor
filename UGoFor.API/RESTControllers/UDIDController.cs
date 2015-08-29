@@ -31,7 +31,7 @@ namespace UGoFor.API.RESTControllers
         // POST: api/UDID
         public void Post([NakedBody] string raw)
         {
-            var xxx = raw.Replace('"',' ');
+            //var xxx = raw.Replace('"',' ');
             SqlParameter[] sqlParams = new SqlParameter[] { new SqlParameter("@DATA", raw) };
             new BaseDAL().ExecuteSPNonReturnData("InsertUDID", sqlParams);
             //var response = new HttpResponseMessage();
