@@ -29,16 +29,10 @@ namespace UGoFor.API.RESTControllers
         }
 
         // POST: api/UDID
-        public HttpResponseMessage Post([NakedBody] string raw)
+        public void Post([NakedBody] string raw)
         {
-            //var xxx = raw.Replace('"',' ');
             SqlParameter[] sqlParams = new SqlParameter[] { new SqlParameter("@DATA", raw) };
             new BaseDAL().ExecuteSPNonReturnData("InsertUDID", sqlParams);
-            var response = new HttpResponseMessage();
-            response.Content = new StringContent("<html><body>" + raw + "</body></html>");
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
-            return response;
-
         }
 
         // PUT: api/UDID/5
