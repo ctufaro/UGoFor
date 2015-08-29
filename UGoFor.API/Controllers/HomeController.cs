@@ -31,5 +31,12 @@ namespace UGoFor.API.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult UDID()
+        {
+           return View("Index");
+        }
+
     }
 }
