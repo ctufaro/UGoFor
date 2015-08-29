@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,9 +8,9 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Threading;
 using System.Threading.Tasks;
-
 using System.Web.Mvc;
 using System.Web.Http.Metadata;
+using UGoFor.API.DAL;
 
 namespace UGoFor.API.RESTControllers
 {
@@ -30,6 +31,9 @@ namespace UGoFor.API.RESTControllers
         // POST: api/UDID
         public void Post([NakedBody] string raw)
         {
+            var xxx = raw.Replace('"',' ');
+            SqlParameter[] sqlParams = new SqlParameter[] { new SqlParameter("@DATA", raw) };
+            new BaseDAL().ExecuteSPNonReturnData("InsertUDID", sqlParams);
             //var response = new HttpResponseMessage();
             //response.Content = new StringContent("<html><body>"+raw+"</body></html>");
             //response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
