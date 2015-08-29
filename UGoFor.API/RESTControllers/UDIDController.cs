@@ -29,10 +29,13 @@ namespace UGoFor.API.RESTControllers
         }
 
         // POST: api/UDID
-        public void Post([NakedBody] string raw)
+        public HttpResponseMessage Post([NakedBody] string raw)
         {
             SqlParameter[] sqlParams = new SqlParameter[] { new SqlParameter("@DATA", raw) };
             new BaseDAL().ExecuteSPNonReturnData("InsertUDID", sqlParams);
+            var response = Request.CreateResponse(HttpStatusCode.Moved);
+            response.Headers.Location = new Uri("http://www.google.com");
+            return response;
         }
 
         // PUT: api/UDID/5
