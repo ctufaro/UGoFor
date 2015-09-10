@@ -84,7 +84,7 @@ namespace UGoFor.API.Models
             }
             if (delta < 30 * DAY)
             {
-                return ts.Days == 1 ? "1 day ago" : ts.Days + " days ago";
+                return ts.Days <= 1 ? "one day ago" : ts.Days + " days ago";
             }
             if (delta < 12 * MONTH)
             {
