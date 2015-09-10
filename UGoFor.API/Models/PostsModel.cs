@@ -70,7 +70,7 @@ namespace UGoFor.API.Models
             {
                 return ts.Minutes + " minutes ago";
             }
-            if (delta < 90 * MINUTE)
+            if (delta < 90 * MINUTE || ts.Hours == 1)
             {
                 return "an hour ago";
             }
