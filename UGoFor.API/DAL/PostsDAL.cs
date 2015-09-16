@@ -16,7 +16,7 @@ namespace UGoFor.API.DAL
         public List<PostsModel> SelectAllUsersPosts()
         {
             List<PostsModel> usersPosts = ExecuteSPReturnData<PostsModel>("SelectAllUsersPosts");
-            return usersPosts.Take(10);
+            return usersPosts.Take(10).ToList();
         }
 
         public List<PostsModel> SelectAllSampleUsersPosts()
