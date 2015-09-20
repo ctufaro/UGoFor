@@ -30,9 +30,9 @@ namespace UGoFor.API.Models
             return postsModel;
         }
 
-        public void InsertPost(PostsModel sentPost)
+        public PostsModel InsertPost(PostsModel sentPost)
         {
-            new PostsDAL().InsertPost(sentPost);
+            return new PostsDAL().InsertPost(sentPost);
         }
 
         public List<PostsModel> SelectAllUsersPosts()
