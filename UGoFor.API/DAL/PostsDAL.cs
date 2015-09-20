@@ -36,7 +36,7 @@ namespace UGoFor.API.DAL
             lp.Add(new PostsModel
             {
                 PostId = 1,
-                ProfilePicURL = "../Content/img/profile.jpg",
+                ProfilePicURL = "../Content/img/profile1.jpg",
                 SmallComment = "Grande Iced Black Eye",
                 TimePosted = "6d",
                 PostedImage = "../Content/img/coffee.jpg",
