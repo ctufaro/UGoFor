@@ -28,25 +28,34 @@ namespace UGoFor.API.Models
             postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
             postsModel.TimePosted = dr["Created"] is DBNull ? null : RelativeTime(dr["Created"].ToString());
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
-            postsModel.Username = TEMPGetUsername(postsModel.PostId);
+            postsModel.Username = TEMPGetUsername(postsModel.ProfilePicURL);
             return postsModel;
         }
 
-        public string TEMPGetUsername(int? id)
+        public string TEMPGetUsername(string url)
         {
-            switch (id.Value)
+            if (url.Contains("profile1.jpg"))
             {
-                case (1):
-                    return "christufaro";
-                case (2):
-                    return "kathleentufaro";
-                case (3):
-                    return "rosietufaro";
-                case (4):
-                    return "gretamoomoo";
-                default:
-                    return "ugoforuser";
+                return "christufaro";
             }
+            else if (url.Contains("profile2.jpg"))
+            {
+                return "kathleentufaro";
+            }
+            else if (url.Contains("profile3.jpg"))
+            {
+                return "rosietufaro";
+            }
+            else if(url.Contains("profile4.jpg"))
+            {
+                return "gretamoo";
+            }
+            else
+            {
+                return "ugoforuser";
+            }
+
+
         }
 
         public PostsModel InsertPost(PostsModel sentPost)
