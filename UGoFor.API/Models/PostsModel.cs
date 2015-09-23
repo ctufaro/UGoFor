@@ -16,6 +16,7 @@ namespace UGoFor.API.Models
         public string PostedImage { get; set; }
         public string BigComment { get; set; }
         public string Location { get; set; }
+        public string Username { get; set; }
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -27,6 +28,7 @@ namespace UGoFor.API.Models
             postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
             postsModel.TimePosted = dr["Created"] is DBNull ? null : RelativeTime(dr["Created"].ToString());
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
+            postsModel.Username = "ugoforuser";
             return postsModel;
         }
 
