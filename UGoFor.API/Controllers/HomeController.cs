@@ -32,10 +32,5 @@ namespace UGoFor.API.Controllers
             return View();
         }
 
-        public ActionResult UDID(string data)
-        {
-            return Content(data);
-        }
-
     }
 }

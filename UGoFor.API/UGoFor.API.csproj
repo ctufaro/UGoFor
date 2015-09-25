@@ -123,23 +123,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\magnific-popup-modal.css" />
-    <Content Include="Content\css\magnific-popup.css" />
-    <Content Include="Content\html\post.html" />
-    <Content Include="Content\html\snippet.html" />
-    <Content Include="Content\html\swatches.html" />
     <Content Include="Content\img\dogfood.jpg" />
     <Content Include="Content\img\nuggets.jpg" />
     <Content Include="Content\img\profile3.jpg" />
     <Content Include="Content\img\profile4.jpg" />
     <Content Include="Content\img\ugofor.png" />
-    <Content Include="Content\js\functions.js" />
-    <Content Include="Content\js\jquery.magnific-popup.min.js" />
-    <Content Include="Content\js\pure.js" />
     <Content Include="DAL\Scripts\Create.txt" />
     <Content Include="packages.config" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\IndexAjax.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Content\img\.gitkeep" />
@@ -156,10 +147,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\foundation.css" />
-    <Content Include="Content\css\foundation.min.css" />
-    <Content Include="Content\css\main.css" />
-    <Content Include="Content\css\normalize.css" />
     <Content Include="Content\img\burger.jpg" />
     <Content Include="Content\img\circle.png" />
     <Content Include="Content\img\coffee.jpg" />
@@ -167,15 +154,6 @@
     <Content Include="Content\img\menu-sprite.png" />
     <Content Include="Content\img\profile.jpg" />
     <Content Include="Content\img\profile2.jpg" />
-    <Content Include="Content\js\foundation.min.js" />
-    <Content Include="Content\js\foundation\foundation.interchange.js" />
-    <Content Include="Content\js\foundation\foundation.js" />
-    <Content Include="Content\js\foundation\foundation.reveal.js" />
-    <Content Include="Content\js\vendor\fastclick.js" />
-    <Content Include="Content\js\vendor\jquery.cookie.js" />
-    <Content Include="Content\js\vendor\jquery.js" />
-    <Content Include="Content\js\vendor\modernizr.js" />
-    <Content Include="Content\js\vendor\placeholder.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
