@@ -68,11 +68,6 @@ namespace UGoFor.API.Models
             return new PostsDAL().SelectAllUsersPosts();
         }
 
-        public List<PostsModel> SelectAllSampleUsersPosts()
-        {
-            return new PostsDAL().SelectAllSampleUsersPosts();
-        }
-
         public string RelativeTime(string timePosted)
         {
             const int SECOND = 1;
