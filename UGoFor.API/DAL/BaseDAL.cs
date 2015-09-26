@@ -85,6 +85,36 @@ namespace UGoFor.API.DAL
             }
         }
 
+        public int ExecuteSPNonReturnData(string storedProcedureName, SqlParameter[] parameters, string outPutID)
+        {
+            int retval = -1;
+            
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString))
+                using (var command = new SqlCommand(storedProcedureName, conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    conn.Open();
+                    foreach (SqlParameter param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+                    command.Parameters.Add(outPutID, SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.ExecuteNonQuery();
+                    retval = Convert.ToInt32(command.Parameters[outPutID].Value);
+                    conn.Close();
+                    return retval;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        } 
+
         public DataTable ExecuteSPReturnDataTable(string storedProcedureName, SqlParameter[] parameters = null)
         {
             DataTable dt = null;

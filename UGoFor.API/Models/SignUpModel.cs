@@ -7,15 +7,17 @@ using UGoFor.API.DAL;
 
 namespace UGoFor.API.Models
 {
-    public class RegisterModel
+    public class SignUpModel
     {
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string ProfilePicURL { get; set; }
+        public string Location { get; set; }
 
-        public void InsertNewUser(RegisterModel sentRegister)
+        public int InsertNewUser(SignUpModel sentNewUser)
         {
-            new RegisterDAL().InsertNewUser(sentRegister);
+            return new SignUpDAL().InsertNewUser(sentNewUser);
         }
     }
 }

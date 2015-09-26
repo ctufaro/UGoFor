@@ -12,6 +12,7 @@ namespace UGoFor.API.Models
         public string FileUrl { get; set; }
         public long FileSizeInBytes { get; set; }
         public long FileSizeInKb { get { return (long)Math.Ceiling((double)FileSizeInBytes / 1024); } }
+        public string CustomData { get; set; }
     }
 
     public class BlobDownloadModel

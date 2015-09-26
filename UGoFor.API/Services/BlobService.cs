@@ -105,14 +105,39 @@ namespace UGoFor.API.Services
 
         public override Task ExecutePostProcessingAsync()
         {
+            //Calling this method for new registration
+            SignUpModel signUp = new SignUpModel();
+
             // NOTE: FileData is a property of MultipartFileStreamProvider and is a list of multipart
             // files that have been uploaded and saved to disk in the Path.GetTempPath() location.
 
             foreach (var fileData in FileData)
             {
+
+                if (fileData.Headers.ContentDisposition.FileName == null)
+                {
+                    //do something here with the form data
+                    var pair = fileData.Headers.ContentDisposition.Name.Trim('"').Split('-');
+                    switch (pair[0])
+                    {
+                        case("uname"):
+                            signUp.Username = pair[1];
+                            break;
+                        case("email"):
+                            signUp.Email = pair[1];
+                            break;
+                        case("pass"):
+                            signUp.Password = pair[1];
+                            break;
+                    }
+                    continue;
+                }
+                
                 // Sometimes the filename has a leading and trailing double-quote character
                 // when uploaded, so we trim it; otherwise, we get an illegal character exception
                 var fileName = Path.GetFileName(fileData.Headers.ContentDisposition.FileName.Trim('"'));
+
+                //signUp.Password = pair[1];
 
                 // Retrieve reference to a blob
                 var blobContainer = BlobHelper.GetBlobContainer();
@@ -130,16 +155,25 @@ namespace UGoFor.API.Services
                 // Delete local file from disk
                 File.Delete(fileData.LocalFileName);
 
+                //Adding New User
+                signUp.ProfilePicURL = blob.Uri.AbsoluteUri;
+                int id = new SignUpModel().InsertNewUser(signUp);
+
                 // Create blob upload model with properties from blob info
                 var blobUpload = new BlobUploadModel
                 {
                     FileName = blob.Name,
                     FileUrl = blob.Uri.AbsoluteUri,
-                    FileSizeInBytes = blob.Properties.Length
+                    FileSizeInBytes = blob.Properties.Length,
+                    CustomData = id.ToString()
                 };
+
+
 
                 // Add uploaded blob to the list
                 Uploads.Add(blobUpload);
+
+
             }
 
             return base.ExecutePostProcessingAsync();
