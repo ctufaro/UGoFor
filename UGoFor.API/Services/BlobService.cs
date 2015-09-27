@@ -157,7 +157,8 @@ namespace UGoFor.API.Services
 
                 //Adding New User
                 signUp.ProfilePicURL = blob.Uri.AbsoluteUri;
-                int id = new SignUpModel().InsertNewUser(signUp);
+                //int id = new SignUpModel().InsertNewUser(signUp);
+                int id = 0;
 
                 // Create blob upload model with properties from blob info
                 var blobUpload = new BlobUploadModel
@@ -168,12 +169,8 @@ namespace UGoFor.API.Services
                     CustomData = id.ToString()
                 };
 
-
-
                 // Add uploaded blob to the list
                 Uploads.Add(blobUpload);
-
-
             }
 
             return base.ExecutePostProcessingAsync();
