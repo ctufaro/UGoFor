@@ -9,6 +9,7 @@ namespace UGoFor.API.Models
 {
     public class PostsModel : IFromDataReader<PostsModel>
     {
+        public int UserId { get; set; }
         public int? PostId { get; set; }
         public string ProfilePicURL { get; set; }
         public string SmallComment { get; set; }
@@ -28,34 +29,8 @@ namespace UGoFor.API.Models
             postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
             postsModel.TimePosted = dr["Created"] is DBNull ? null : RelativeTime(dr["Created"].ToString());
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
-            postsModel.Username = TEMPGetUsername(postsModel.ProfilePicURL);
+            postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             return postsModel;
-        }
-
-        public string TEMPGetUsername(string url)
-        {
-            if (url.Contains("profile1.jpg"))
-            {
-                return "christufaro";
-            }
-            else if (url.Contains("profile2.jpg"))
-            {
-                return "kathleentufaro";
-            }
-            else if (url.Contains("profile3.jpg"))
-            {
-                return "rosietufaro";
-            }
-            else if(url.Contains("profile4.jpg"))
-            {
-                return "gretamoo";
-            }
-            else
-            {
-                return "ugoforuser";
-            }
-
-
         }
 
         public PostsModel InsertPost(PostsModel sentPost)

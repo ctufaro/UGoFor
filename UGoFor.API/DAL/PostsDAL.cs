@@ -22,26 +22,25 @@ namespace UGoFor.API.DAL
         public PostsModel InsertPost(PostsModel sentPost)
         {
             string[] sampleFoods = new string[] { "burger.jpg", "coffee.jpg", "nuggets.jpg", "dogfood.jpg" };
-
-            int userId = new Random(Guid.NewGuid().GetHashCode()).Next(1,5);
-            string profileURL = string.Format("http://ugoforweb.azurewebsites.net/www/img/profile{0}.jpg",userId);
             string imageURL = "http://ugoforweb.azurewebsites.net/www/img/" + sampleFoods[new Random(Guid.NewGuid().GetHashCode()).Next(0,4)];
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@USERID", userId),
+                new SqlParameter("@USERID", sentPost.UserId),
                 new SqlParameter("@SHORTCOMMENT", sentPost.SmallComment),
                 new SqlParameter("@IMAGEURL", imageURL),
                 new SqlParameter("@COMMENT", sentPost.BigComment),
                 new SqlParameter("@LOCATION", sentPost.Location),
             };
-            ExecuteSPNonReturnData("InsertUserPost", parameters);
 
-            return new PostsModel { ProfilePicURL = profileURL, 
+            var postedUser = ExecuteSPReturnData<PostsModel>("InsertUserPost", parameters).First();
+
+            return new PostsModel { ProfilePicURL = postedUser.ProfilePicURL, 
                                     SmallComment = sentPost.SmallComment, 
                                     TimePosted = "1s",
                                     PostedImage = imageURL, 
-                                    BigComment = sentPost.BigComment 
+                                    BigComment = sentPost.BigComment,
+                                    Username = postedUser.Username
                                   };
         }
     }
