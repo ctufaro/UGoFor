@@ -107,6 +107,7 @@ namespace UGoFor.API.Services
         {
             //Calling this method for new registration
             SignUpModel signUp = new SignUpModel();
+            bool isASignUp = false;
 
             // NOTE: FileData is a property of MultipartFileStreamProvider and is a list of multipart
             // files that have been uploaded and saved to disk in the Path.GetTempPath() location.
@@ -122,12 +123,15 @@ namespace UGoFor.API.Services
                     {
                         case("uname"):
                             signUp.Username = pair[1];
+                            isASignUp = true;
                             break;
                         case("email"):
                             signUp.Email = pair[1];
+                            isASignUp = true;
                             break;
                         case("pass"):
                             signUp.Password = pair[1];
+                            isASignUp = true;
                             break;
                     }
                     continue;
@@ -156,8 +160,12 @@ namespace UGoFor.API.Services
                 File.Delete(fileData.LocalFileName);
 
                 //Adding New User
-                signUp.ProfilePicURL = blob.Uri.AbsoluteUri;
-                int id = new SignUpModel().InsertNewUser(signUp);
+                int id = 0;
+                if (isASignUp)
+                { 
+                    signUp.ProfilePicURL = blob.Uri.AbsoluteUri;
+                    id = new SignUpModel().InsertNewUser(signUp);
+                }
 
                 // Create blob upload model with properties from blob info
                 var blobUpload = new BlobUploadModel
