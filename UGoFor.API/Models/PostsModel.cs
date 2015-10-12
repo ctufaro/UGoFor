@@ -18,6 +18,8 @@ namespace UGoFor.API.Models
         public string BigComment { get; set; }
         public string Location { get; set; }
         public string Username { get; set; }
+        public string Filter { get; set; }
+        public string Guid { get; set; }
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -30,12 +32,25 @@ namespace UGoFor.API.Models
             postsModel.TimePosted = dr["Created"] is DBNull ? null : RelativeTime(dr["Created"].ToString());
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
+            postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
+            postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
             return postsModel;
         }
 
+        [Obsolete("InsertPost is deprecated, please use UpdatePhotoPost instead.")]
         public PostsModel InsertPost(PostsModel sentPost)
         {
             return new PostsDAL().InsertPost(sentPost);
+        }
+
+        public void InsertPhotoPost(PostsModel photoPost)
+        {
+            new PostsDAL().InsertPhotoPost(photoPost);
+        }
+
+        public void UpdatePhotoPost(PostsModel photoPost)
+        {
+            new PostsDAL().UpdatePhotoPost(photoPost);
         }
 
         public List<PostsModel> SelectAllUsersPosts()

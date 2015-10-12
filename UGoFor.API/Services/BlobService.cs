@@ -107,7 +107,10 @@ namespace UGoFor.API.Services
         {
             //Calling this method for new registration
             SignUpModel signUp = new SignUpModel();
+            PostsModel newPost = new PostsModel();
+
             bool isASignUp = false;
+            bool isAPhotoPost = false;
 
             // NOTE: FileData is a property of MultipartFileStreamProvider and is a list of multipart
             // files that have been uploaded and saved to disk in the Path.GetTempPath() location.
@@ -132,6 +135,18 @@ namespace UGoFor.API.Services
                         case("pass"):
                             signUp.Password = pair[1];
                             isASignUp = true;
+                            break;
+                        case ("userid"):
+                            newPost.UserId = Convert.ToInt32(pair[1]);
+                            isAPhotoPost = true;
+                            break;
+                        case ("filtername"):
+                            newPost.Filter = pair[1];
+                            isAPhotoPost = true;
+                            break;
+                        case ("guid"):
+                            newPost.Guid = pair[1];
+                            isAPhotoPost = true;
                             break;
                     }
                     continue;
@@ -165,6 +180,12 @@ namespace UGoFor.API.Services
                 { 
                     signUp.ProfilePicURL = blob.Uri.AbsoluteUri;
                     id = new SignUpModel().InsertNewUser(signUp);
+                }
+                //Adding a New Post
+                else if (isAPhotoPost)
+                {
+                    newPost.PostedImage = blob.Uri.AbsoluteUri;
+                    new PostsModel().InsertPhotoPost(newPost);
                 }
 
                 // Create blob upload model with properties from blob info

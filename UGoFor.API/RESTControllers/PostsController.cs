@@ -23,9 +23,9 @@ namespace UGoFor.API.Controllers
         }
 
         // POST: api/Posts
-        public PostsModel Post(PostsModel sentPost)
+        public void Post(PostsModel sentPost)
         {
-            return new PostsModel().InsertPost(sentPost);
+            new PostsModel().UpdatePhotoPost(sentPost);
         }
 
         // PUT: api/Posts/5

@@ -19,6 +19,7 @@ namespace UGoFor.API.DAL
             return usersPosts.Take(30).ToList();
         }
 
+        [Obsolete("InsertPost is deprecated, please use UpdatePhotoPost instead.")]
         public PostsModel InsertPost(PostsModel sentPost)
         {
             string[] sampleFoods = new string[] { "burger.jpg", "coffee.jpg", "nuggets.jpg", "dogfood.jpg" };
@@ -42,6 +43,33 @@ namespace UGoFor.API.DAL
                                     BigComment = sentPost.BigComment,
                                     Username = postedUser.Username
                                   };
+        }
+
+        public void InsertPhotoPost(PostsModel photoPost)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", photoPost.UserId),
+                new SqlParameter("@IMAGEURL", photoPost.PostedImage),
+                new SqlParameter("@FILTER", photoPost.Filter),
+                new SqlParameter("@GUID", photoPost.Guid),
+            };
+
+            ExecuteSPNonReturnData("InsertPhotoPost", parameters);
+        }
+
+        public void UpdatePhotoPost(PostsModel photoPost)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", photoPost.UserId),
+                new SqlParameter("@SHORTCOMMENT", photoPost.SmallComment),
+                new SqlParameter("@COMMENT", photoPost.BigComment),
+                new SqlParameter("@LOCATION", photoPost.Location),
+                new SqlParameter("@GUID", photoPost.Guid),
+            };
+
+            ExecuteSPNonReturnData("UpdateUserPost", parameters);
         }
     }
 }
