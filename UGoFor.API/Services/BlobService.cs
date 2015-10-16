@@ -173,10 +173,10 @@ namespace UGoFor.API.Services
                     //APPLY FILTERS HERE                   
 
                     //convert stream into image, and apply filter                    
-                    Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
+                    //Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
 
                     //convert compressed image back into stream
-                    Compression.SaveJpegToStreamWithCompressionSetting(filterApplied, 40, fs);
+                    //Compression.SaveJpegToStreamWithCompressionSetting(filterApplied, 40, fs);
 
                     blob.UploadFromStream(fs);
                 }
