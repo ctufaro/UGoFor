@@ -16,12 +16,32 @@ namespace UGoFor.API.Filters
             return encoders.FirstOrDefault(t => t.MimeType == mimeType);
         }
 
-        public static Stream ToStream(this Image image, ImageFormat formaw)
+        public static Stream ToStream(this Image image, long compression)
         {
+            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+            System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, compression);
+            myEncoderParameters.Param[0] = myEncoderParameter;
             var stream = new System.IO.MemoryStream();
-            image.Save(stream, formaw);
+            image.Save(stream, jpgEncoder, myEncoderParameters);
             stream.Position = 0;
             return stream;
+        }
+
+        private static ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
         }
 
         /// <summary>
