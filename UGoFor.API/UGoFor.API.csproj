@@ -190,6 +190,9 @@
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\PostsDAL.cs" />
     <Compile Include="DAL\SignUpDAL.cs" />
+    <Compile Include="Filters\Compression.cs" />
+    <Compile Include="Filters\Filters.cs" />
+    <Compile Include="Filters\UGoFilters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

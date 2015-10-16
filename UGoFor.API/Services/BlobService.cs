@@ -3,12 +3,14 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using UGoFor.API.Models;
+using UGoFor.API.Filters;
 
 namespace UGoFor.API.Services
 {
@@ -168,6 +170,14 @@ namespace UGoFor.API.Services
                 // Upload file into blob storage, basically copying it from local disk into Azure
                 using (var fs = File.OpenRead(fileData.LocalFileName))
                 {
+                    //APPLY FILTERS HERE                   
+
+                    //convert stream into image, and apply filter                    
+                    Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
+
+                    //convert compressed image back into stream
+                    Compression.SaveJpegToStreamWithCompressionSetting(filterApplied, 40, fs);
+
                     blob.UploadFromStream(fs);
                 }
 
