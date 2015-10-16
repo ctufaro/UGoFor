@@ -173,10 +173,11 @@ namespace UGoFor.API.Services
                     //APPLY FILTERS HERE                   
 
                     //convert stream into image, and apply filter                    
-                    Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
+                    //Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
 
                     //convert image to stream and upload
-                    blob.UploadFromStream(Compression.ToStream(filterApplied, 35));
+                    //blob.UploadFromStream(Compression.ToStream(filterApplied, 35));
+                    blob.UploadFromStream(fs);
                 }
 
                 // Delete local file from disk
