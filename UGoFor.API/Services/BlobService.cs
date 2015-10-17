@@ -170,14 +170,14 @@ namespace UGoFor.API.Services
                 // Upload file into blob storage, basically copying it from local disk into Azure
                 using (var fs = File.OpenRead(fileData.LocalFileName))
                 {
-                    //APPLY FILTERS HERE                   
+                    //APPLY FILTERS HERE 
+                    string passedFilter = string.IsNullOrEmpty(newPost.Filter) ? "" : newPost.Filter;
 
                     //convert stream into image, and apply filter                    
-                    //Image filterApplied = UGoFilters.ApplyFilter(UGoFilters.Filters.Inkwell, Image.FromStream(fs));
+                    Image filterApplied = UGoFilters.ApplyFilter(passedFilter, Image.FromStream(fs));
 
                     //convert image to stream and upload
-                    //blob.UploadFromStream(Compression.ToStream(filterApplied, 35));
-                    blob.UploadFromStream(fs);
+                    blob.UploadFromStream(Compression.ToStream(filterApplied, 35));
                 }
 
                 // Delete local file from disk
@@ -207,11 +207,8 @@ namespace UGoFor.API.Services
                 };
 
 
-
                 // Add uploaded blob to the list
                 Uploads.Add(blobUpload);
-
-
             }
 
             return base.ExecutePostProcessingAsync();
