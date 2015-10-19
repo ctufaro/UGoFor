@@ -119,7 +119,17 @@ namespace UGoFor.API.Models
 
         public class PostsComment
         {
-            public string PostCommenter { get; set; }
+            private string _postCommenter;
+            public string PostCommenter {
+                get
+                {
+                    return string.Concat(_postCommenter," ");
+                }
+                set
+                {
+                    _postCommenter = value;
+                }
+            }
             public string PostComment { get; set; }
         }
     }
