@@ -20,6 +20,7 @@ namespace UGoFor.API.Models
         public string Username { get; set; }
         public string Filter { get; set; }
         public string Guid { get; set; }
+        public List<PostsComment> PostComments {get;set;}
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -34,6 +35,7 @@ namespace UGoFor.API.Models
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
+            postsModel.PostComments = new List<PostsComment>() { new PostsComment { PostCommenter = "ugoforchris", PostComment = "comments coming soon!!!" } };
             return postsModel;
         }
 
@@ -110,5 +112,13 @@ namespace UGoFor.API.Models
                 return years + "y";
             }
         }
+
+        public class PostsComment
+        {
+            public string PostCommenter { get; set; }
+            public string PostComment { get; set; }
+        }
     }
+
+
 }
