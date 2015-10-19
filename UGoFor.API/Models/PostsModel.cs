@@ -35,7 +35,11 @@ namespace UGoFor.API.Models
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
-            postsModel.PostComments = new List<PostsComment>() { new PostsComment { PostCommenter = "ugoforchris", PostComment = "comments coming soon!!!" } };
+            postsModel.PostComments = new List<PostsComment>()
+                                      {
+                                        new PostsComment { PostCommenter = "ugoforchris", PostComment = "post comments coming soon!" },
+                                        new PostsComment { PostCommenter = "weebleswobble", PostComment = "Great! Another instagram ripoff." }
+                                      };
             return postsModel;
         }
 
