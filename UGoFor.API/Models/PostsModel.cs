@@ -38,7 +38,8 @@ namespace UGoFor.API.Models
             postsModel.PostComments = new List<PostsComment>()
                                       {
                                         new PostsComment { PostCommenter = "ugoforchris", PostComment = "post comments coming soon!" },
-                                        new PostsComment { PostCommenter = "weebleswobble", PostComment = "Great! Another instagram ripoff." }
+                                        new PostsComment { PostCommenter = "weebleswobble", PostComment = "Great! Another instagram ripoff." },
+					new PostsComment { PostCommenter = "ugoforchris", PostComment = "fuck you, let's see you write an app single-handedly." }
                                       };
             return postsModel;
         }
