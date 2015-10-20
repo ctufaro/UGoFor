@@ -24,7 +24,7 @@ namespace UGoFor.API.Models
             commentsModel.PostId = dr["PostId"] is DBNull ? null : dr["PostId"] as Int32?;
             commentsModel.UserId = dr["UserId"] is DBNull ? null : dr["UserId"] as Int32?;
             commentsModel.Comment = dr["Comment"] is DBNull ? null : dr["Comment"].ToString();
-            commentsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
+            commentsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString() + " ";
             return commentsModel;
         }
 
