@@ -188,6 +188,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BaseDAL.cs" />
+    <Compile Include="DAL\CommentsDAL.cs" />
     <Compile Include="DAL\PostsDAL.cs" />
     <Compile Include="DAL\SignUpDAL.cs" />
     <Compile Include="Filters\Compression.cs" />
@@ -197,6 +198,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BlobsModel.cs" />
+    <Compile Include="Models\CommentsModel.cs" />
     <Compile Include="Models\PostsModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\SuggestionsModel.cs" />

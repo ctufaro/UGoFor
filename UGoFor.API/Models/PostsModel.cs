@@ -20,7 +20,7 @@ namespace UGoFor.API.Models
         public string Username { get; set; }
         public string Filter { get; set; }
         public string Guid { get; set; }
-        public List<PostsComment> PostComments {get;set;}
+        public List<CommentsModel> PostComments {get;set;}
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -35,12 +35,7 @@ namespace UGoFor.API.Models
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
-            postsModel.PostComments = new List<PostsComment>()
-                                      {
-                                        new PostsComment { PostCommenter = "ugoforchris", PostComment = "post comments coming soon!" },
-                                        new PostsComment { PostCommenter = "weebleswobble", PostComment = "Great! Another instagram ripoff." },
-					new PostsComment { PostCommenter = "ugoforchris", PostComment = "fuck you, let's see you write an app single-handedly." }
-                                      };
+            postsModel.PostComments = new CommentsModel().SelectAllPostComments().Where(x => x.PostId == postsModel.PostId).ToList();
             return postsModel;
         }
 
@@ -116,22 +111,6 @@ namespace UGoFor.API.Models
                 int years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
                 return years + "y";
             }
-        }
-
-        public class PostsComment
-        {
-            private string _postCommenter;
-            public string PostCommenter {
-                get
-                {
-                    return string.Concat(_postCommenter," ");
-                }
-                set
-                {
-                    _postCommenter = value;
-                }
-            }
-            public string PostComment { get; set; }
         }
     }
 
