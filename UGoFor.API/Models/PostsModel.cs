@@ -20,7 +20,13 @@ namespace UGoFor.API.Models
         public string Username { get; set; }
         public string Filter { get; set; }
         public string Guid { get; set; }
-        public List<CommentsModel> PostComments {get;set;}
+        public List<CommentsModel> PostComments { get; set; }
+        private List<CommentsModel> _allcomments { get; set; }
+
+        public PostsModel()
+        {
+            _allcomments = new CommentsModel().SelectAllPostComments();
+        }
 
         public PostsModel FromDataReader(IDataReader dr)
         {
@@ -35,7 +41,7 @@ namespace UGoFor.API.Models
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
-            postsModel.PostComments = new CommentsModel().SelectAllPostComments().Where(x => x.PostId == postsModel.PostId).ToList();
+            postsModel.PostComments = _allcomments.Where(x => x.PostId == postsModel.PostId).ToList();
             return postsModel;
         }
 
