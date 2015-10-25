@@ -16,6 +16,7 @@ namespace UGoFor.API.Models
         public int? UserId { get; set; }
         public string Comment { get; set; }
         public string Username { get; set; }
+        public string Location { get; set; }
 
         public CommentsModel FromDataReader(IDataReader dr)
         {
@@ -34,6 +35,11 @@ namespace UGoFor.API.Models
             return new CommentsDAL().SelectAllPostComments();
         }
 
+
+        public List<CommentsModel> InsertComment(CommentsModel sentComment)
+        {
+            return new CommentsDAL().InsertComment(sentComment);
+        }
     }
 
 

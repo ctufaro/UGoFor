@@ -15,5 +15,20 @@ namespace UGoFor.API.DAL
             List<CommentsModel> postComments = ExecuteSPReturnData<CommentsModel>("SelectAllPostComments");
             return postComments;
         }
+
+        public List<CommentsModel> InsertComment(CommentsModel sentComment)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@POSTID", sentComment.PostId),
+                new SqlParameter("@USERID", sentComment.UserId),
+                new SqlParameter("@COMMENT", sentComment.Comment),
+                new SqlParameter("@LOCATION", sentComment.Location),
+            };
+
+            List<CommentsModel> retset = ExecuteSPReturnData<CommentsModel>("InsertComment", parameters);
+
+            return retset;
+        }
     }
 }
