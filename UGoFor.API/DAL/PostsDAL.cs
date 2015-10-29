@@ -16,7 +16,7 @@ namespace UGoFor.API.DAL
         public List<PostsModel> SelectAllUsersPosts()
         {
             List<PostsModel> usersPosts = ExecuteSPReturnData<PostsModel>("SelectAllUsersPosts");
-            return usersPosts.Take(30).ToList();
+            return usersPosts;
         }
 
         [Obsolete("InsertPost is deprecated, please use UpdatePhotoPost instead.")]

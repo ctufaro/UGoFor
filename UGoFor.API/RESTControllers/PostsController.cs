@@ -10,23 +10,35 @@ namespace UGoFor.API.Controllers
 {
     public class PostsController : ApiController
     {
+        //IMPORTANT - IF THIS GETS SLOW WE MAY NEED TO STOP CALLING SelectAllUsersPosts()
+        
+        private int batchsize = 15;
+        
         // GET: api/Posts
         public IEnumerable<PostsModel> Get()
         {
-            return new PostsModel().SelectAllUsersPosts();
+            return new PostsModel().SelectAllUsersPosts().Take(batchsize).ToList();
         }
 
         // GET: api/Posts/5
-        public string Get(int id)
+        public IEnumerable<PostsModel> Get(int id, int direction)
         {
-            return "value";
+            if (direction == 0)
+            {
+                return new PostsModel().SelectAllUsersPosts().Where(x => x.PostId < id).Take(batchsize).ToList();
+            }
+            else
+            {
+                return new PostsModel().SelectAllUsersPosts().Where(x => (x.PostId > id));
+            }
+            
         }
 
         // POST: api/Posts
         public void Post(PostsModel sentPost)
         {
             new PostsModel().UpdatePhotoPost(sentPost);
-        }
+        } 
 
         // PUT: api/Posts/5
         public void Put(int id, [FromBody]string value)
