@@ -177,7 +177,7 @@ namespace UGoFor.API.Services
                     Image filterApplied = UGoFilters.ApplyFilter(passedFilter, Image.FromStream(fs));
 
                     //convert image to stream and upload
-                    blob.UploadFromStream(Compression.ToStream(filterApplied, 45));
+                    blob.UploadFromStream(Compression.ToStream(filterApplied, 30));
                 }
 
                 // Delete local file from disk
