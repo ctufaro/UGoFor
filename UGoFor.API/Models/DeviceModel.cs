@@ -14,7 +14,7 @@ namespace UGoFor.API.Models
 
         public void CheckDevice(DeviceModel device)
         {
-            return new DeviceDAL().CheckDevice(device);
+            new DeviceDAL().CheckDevice(device);
         }
     }
 }

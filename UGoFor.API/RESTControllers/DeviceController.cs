@@ -25,7 +25,7 @@ namespace UGoFor.API.RESTControllers
         // POST: api/Device
         public void Post(DeviceModel device)
         {
-            return new DeviceModel().CheckDevice(device);
+            new DeviceModel().CheckDevice(device);
         }
 
         // PUT: api/Device/5
