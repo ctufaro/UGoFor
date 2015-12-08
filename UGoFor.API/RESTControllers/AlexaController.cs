@@ -15,7 +15,7 @@ namespace UGoFor.API.RESTControllers
             AlexaResponse retval = new AlexaResponse();
             retval.version = "1.0";
             retval.response.outputSpeech.type = "PlainText";
-            retval.response.outputSpeech.text = "Hello Beautiful World";
+            retval.response.outputSpeech.text = "Kathleen, you are my world entire, I love you more than bees love honey, more than Greta likes licking her paws, more than Chris from next door likes smoking marijuana, more than the Earth. I'm always thinking about you, remember that.";
             retval.response.shouldEndSession = true;
             return retval;            
         }
