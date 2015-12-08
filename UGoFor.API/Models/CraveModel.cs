@@ -9,6 +9,7 @@ namespace UGoFor.API.Models
     public class CraveModel
     {
         public int UserId { get; set; }
+        public int Type { get; set; }
         public int? PostId { get; set; }
         public string CravingText { get; set; }
         public string CravingAmt { get; set; }

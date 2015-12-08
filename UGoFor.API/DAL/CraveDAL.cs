@@ -11,16 +11,17 @@ namespace UGoFor.API.DAL
     {
         public void InsertCrave(CraveModel crave)
         {
-            //SqlParameter[] parameters = new SqlParameter[]
-            //{
-            //    new SqlParameter("@USERID", crave.UserId),
-            //    new SqlParameter("@SHORTCOMMENT", photoPost.SmallComment),
-            //    new SqlParameter("@COMMENT", photoPost.BigComment),
-            //    new SqlParameter("@LOCATION", photoPost.Location),
-            //    new SqlParameter("@GUID", photoPost.Guid),
-            //};
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", crave.UserId),
+                new SqlParameter("@SHORTCOMMENT", crave.CravingAmt),
+                new SqlParameter("@IMAGEURL", crave.CravingPic),
+                new SqlParameter("@COMMENT", crave.CravingText),
+                new SqlParameter("@LOCATION", crave.Location),
+                new SqlParameter("@TYPE", crave.Type)
+            };
 
-            //ExecuteSPNonReturnData("InsertUserCrave", parameters);
+            ExecuteSPNonReturnData("InsertUserPost", parameters);
         }
     }
 }
