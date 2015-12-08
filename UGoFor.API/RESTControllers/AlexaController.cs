@@ -10,7 +10,7 @@ namespace UGoFor.API.RESTControllers
     public class AlexaController : ApiController
     {
         // GET: api/Alexa
-        public IEnumerable<string> GetFunPhrase()
+        public IEnumerable<string> GetFunPhrase(int id)
         {
             return new string[] { "value1", "value2" };
         }
