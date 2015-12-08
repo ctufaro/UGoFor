@@ -10,9 +10,14 @@ namespace UGoFor.API.RESTControllers
     public class AlexaController : ApiController
     {
         // POST: api/Alexa
-        public IEnumerable<string> PostFunPhrase(dynamic message)
+        public AlexaResponse PostFunPhrase(dynamic message)
         {
-            return new string[] { "value1", "value2" };
+            AlexaResponse retval = new AlexaResponse();
+            retval.version = "1.0";
+            retval.response.outputSpeech.type = "PlainText";
+            retval.response.outputSpeech.text = "Hello Beautiful World";
+            retval.response.shouldEndSession = true;
+            return retval;            
         }
 
         // GET: api/Alexa/5
@@ -36,4 +41,21 @@ namespace UGoFor.API.RESTControllers
         {
         }
     }
+
+    public class AlexaResponse
+    {
+        public string version { get; set; }
+        public AlexaResponseObj response { get; set; }
+    }
+    public class AlexaResponseObj
+    {
+        public AlexaOutputSpeechObj outputSpeech { get; set; }
+        public bool shouldEndSession { get; set; }
+    }
+    public class AlexaOutputSpeechObj
+    {
+        public string type { get; set; }
+        public string text { get; set; }
+    }
+
 }
