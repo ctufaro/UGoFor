@@ -19,7 +19,7 @@ namespace UGoFor.API.Models
 
         public void InsertCrave(CraveModel crave)
         {
-            return new CraveDAL().InsertCrave(crave);
+            new CraveDAL().InsertCrave(crave);
         }
     }
 }
