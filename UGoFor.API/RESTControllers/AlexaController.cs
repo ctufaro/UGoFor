@@ -46,11 +46,19 @@ namespace UGoFor.API.RESTControllers
     {
         public string version { get; set; }
         public AlexaResponseObj response { get; set; }
+        public AlexaResponse()
+        {
+            this.response = new AlexaResponseObj();
+        }
     }
     public class AlexaResponseObj
     {
         public AlexaOutputSpeechObj outputSpeech { get; set; }
         public bool shouldEndSession { get; set; }
+        public AlexaResponseObj()
+        {
+            this.outputSpeech = new AlexaOutputSpeechObj();
+        }
     }
     public class AlexaOutputSpeechObj
     {
