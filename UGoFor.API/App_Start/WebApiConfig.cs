@@ -35,9 +35,9 @@ namespace UGoFor.API
 
             config.Routes.MapHttpRoute(
                 "GetFunPhrase",
-                "alexa/funphrase/{id}",
+                "alexa/funphrase",
                 new { controller = "Alexa", action = "GetFunPhrase" },
-                new { httpMethod = new HttpMethodConstraint("GET") }
+                new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
