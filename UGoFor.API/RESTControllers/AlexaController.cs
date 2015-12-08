@@ -10,7 +10,7 @@ namespace UGoFor.API.RESTControllers
     public class AlexaController : ApiController
     {
         // POST: api/Alexa
-        public IEnumerable<string> GetFunPhrase(dynamic message)
+        public IEnumerable<string> PostFunPhrase(dynamic message)
         {
             return new string[] { "value1", "value2" };
         }

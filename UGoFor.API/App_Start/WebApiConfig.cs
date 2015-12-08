@@ -34,9 +34,9 @@ namespace UGoFor.API
             );
 
             config.Routes.MapHttpRoute(
-                "GetFunPhrase",
+                "PostFunPhrase",
                 "alexa/funphrase",
-                new { controller = "Alexa", action = "GetFunPhrase" },
+                new { controller = "Alexa", action = "PostFunPhrase" },
                 new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
