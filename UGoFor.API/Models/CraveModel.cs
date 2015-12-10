@@ -30,7 +30,7 @@ namespace UGoFor.API.Models
 
             if (coords.Trim().Equals("NULL"))
             {
-                return retval;
+                return "&nbsp;";
             }
 
             try
