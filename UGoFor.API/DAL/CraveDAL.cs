@@ -14,9 +14,9 @@ namespace UGoFor.API.DAL
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@USERID", crave.UserId),
-                new SqlParameter("@SHORTCOMMENT", crave.CravingText),
+                new SqlParameter("@SHORTCOMMENT", crave.CravingTextShort),
                 new SqlParameter("@IMAGEURL", crave.CravingPic),
-                new SqlParameter("@COMMENT", crave.CravingAmt),
+                new SqlParameter("@COMMENT", crave.CravingTextLong),
                 new SqlParameter("@LOCATION", crave.Location),
                 new SqlParameter("@TYPE", crave.Type)
             };

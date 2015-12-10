@@ -11,8 +11,8 @@ namespace UGoFor.API.Models
         public int UserId { get; set; }
         public int Type { get; set; }
         public int? PostId { get; set; }
-        public string CravingText { get; set; }
-        public string CravingAmt { get; set; }
+        public string CravingTextShort { get; set; }
+        public string CravingTextLong { get; set; }
         public string CravingPic { get; set; }
         public string TimePosted { get; set; }
         public string Location { get; set; }
