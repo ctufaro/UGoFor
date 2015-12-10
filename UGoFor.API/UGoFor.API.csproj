@@ -209,6 +209,7 @@
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\SuggestionsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESTControllers\AlexaController.cs" />
     <Compile Include="RESTControllers\BlobsController.cs" />
     <Compile Include="RESTControllers\CommentsController.cs" />
     <Compile Include="RESTControllers\CraveController.cs" />

@@ -33,6 +33,13 @@ namespace UGoFor.API
                 new { httpMethod = new HttpMethodConstraint("GET") }
             );
 
+            config.Routes.MapHttpRoute(
+                "PostFunPhrase",
+                "alexa/funphrase",
+                new { controller = "Alexa", action = "PostFunPhrase" },
+                new { httpMethod = new HttpMethodConstraint("POST") }
+            );
+
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
