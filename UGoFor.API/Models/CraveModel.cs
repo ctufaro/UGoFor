@@ -27,6 +27,12 @@ namespace UGoFor.API.Models
         public string GetGeoLocation(string coords)
         {
             string retval = string.Empty;
+
+            if (coords.Trim().Equals("NULL"))
+            {
+                return retval;
+            }
+
             try
             {
                 coords = coords.Replace("Latitude: ", "").Replace(" Longitude: ", ",");
