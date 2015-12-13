@@ -14,6 +14,7 @@ namespace UGoFor.API.Models
         public string ProfilePicURL { get; set; }
         public string SmallComment { get; set; }
         public string TimePosted { get; set; }
+        public int? Type { get; set; }
         public string PostedImage { get; set; }
         public string BigComment { get; set; }
         public string Location { get; set; }
@@ -37,6 +38,7 @@ namespace UGoFor.API.Models
             postsModel.SmallComment = dr["ShortComment"] is DBNull ? null : dr["ShortComment"].ToString();
             postsModel.PostedImage = dr["ImageURL"] is DBNull ? null : dr["ImageURL"].ToString();
             postsModel.TimePosted = dr["Created"] is DBNull ? null : RelativeTime(dr["Created"].ToString());
+            postsModel.Type = dr["Type"] is DBNull ? null : dr["Type"] as Int32?;
             postsModel.Location = dr["Location"] is DBNull ? null : dr["Location"].ToString();
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
