@@ -16,6 +16,7 @@ namespace UGoFor.API.Models
         public int? UserId { get; set; }
         public string Comment { get; set; }
         public string Username { get; set; }
+        public string ProfileUrl { get; set; }
         public string Location { get; set; }
 
         public CommentsModel FromDataReader(IDataReader dr)
@@ -26,6 +27,7 @@ namespace UGoFor.API.Models
             commentsModel.UserId = dr["UserId"] is DBNull ? null : dr["UserId"] as Int32?;
             commentsModel.Comment = dr["Comment"] is DBNull ? null : dr["Comment"].ToString();
             commentsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString() + " ";
+            commentsModel.ProfileUrl = dr["ProfileUrl"] is DBNull ? null : dr["ProfileUrl"].ToString() + " ";
             return commentsModel;
         }
 

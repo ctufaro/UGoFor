@@ -13,6 +13,7 @@ namespace UGoFor.API.DAL
         public List<CommentsModel> SelectAllPostComments()
         {
             List<CommentsModel> postComments = ExecuteSPReturnData<CommentsModel>("SelectAllPostComments");
+            if (postComments.Count == 0) { postComments.Add(GetInitPost()); }
             return postComments;
         }
 
@@ -29,6 +30,16 @@ namespace UGoFor.API.DAL
             List<CommentsModel> retset = ExecuteSPReturnData<CommentsModel>("InsertComment", parameters);
 
             return retset;
+        }
+
+        public CommentsModel GetInitPost()
+        {
+            return new CommentsModel
+            {
+                Username = "ugofor",
+                Comment = "hi",
+                ProfileUrl = "img/craveprofile.jpg"
+            };
         }
     }
 }
