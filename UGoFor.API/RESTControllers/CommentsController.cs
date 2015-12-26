@@ -17,11 +17,12 @@ namespace UGoFor.API.Controllers
         }
 
         // POST: api/Comments
-        public CommentsList Post(CommentsModel sentComment)
+        public void Post(CommentsModel sentComment)
         {
-            CommentsList commentsList = new CommentsList();
-            commentsList.PostComments = new CommentsModel().InsertComment(sentComment);
-            return commentsList;
+            //CommentsList commentsList = new CommentsList();
+            //commentsList.PostComments = new CommentsModel().InsertComment(sentComment);
+            //return commentsList;
+            new CommentsModel().InsertComment(sentComment);
         }
     }
 
