@@ -16,7 +16,7 @@ namespace UGoFor.API.DAL
             return postComments;
         }
 
-        public List<CommentsModel> InsertComment(CommentsModel sentComment)
+        public void InsertComment(CommentsModel sentComment)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -26,9 +26,8 @@ namespace UGoFor.API.DAL
                 new SqlParameter("@LOCATION", sentComment.Location),
             };
 
-            List<CommentsModel> retset = ExecuteSPReturnData<CommentsModel>("InsertComment", parameters);
+            ExecuteSPNonReturnData("InsertComment", parameters);
 
-            return retset;
         }
 
         public static CommentsModel GetInitPost()

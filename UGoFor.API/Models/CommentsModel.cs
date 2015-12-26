@@ -38,9 +38,9 @@ namespace UGoFor.API.Models
         }
 
 
-        public List<CommentsModel> InsertComment(CommentsModel sentComment)
+        public void InsertComment(CommentsModel sentComment)
         {
-            return new CommentsDAL().InsertComment(sentComment);
+            new CommentsDAL().InsertComment(sentComment);
         }
     }
 
