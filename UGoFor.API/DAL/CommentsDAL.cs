@@ -13,7 +13,6 @@ namespace UGoFor.API.DAL
         public List<CommentsModel> SelectAllPostComments()
         {
             List<CommentsModel> postComments = ExecuteSPReturnData<CommentsModel>("SelectAllPostComments");
-            if (postComments.Count == 0) { postComments.Add(GetInitPost()); }
             return postComments;
         }
 
@@ -32,7 +31,7 @@ namespace UGoFor.API.DAL
             return retset;
         }
 
-        public CommentsModel GetInitPost()
+        public static CommentsModel GetInitPost()
         {
             return new CommentsModel
             {

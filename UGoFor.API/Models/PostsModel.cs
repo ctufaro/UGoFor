@@ -44,6 +44,7 @@ namespace UGoFor.API.Models
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
             postsModel.PostComments = _allcomments.Where(x => x.PostId == postsModel.PostId).ToList();
+            if (postsModel.PostComments.Count == 0) { postsModel.PostComments.Add(CommentsDAL.GetInitPost()); }
             return postsModel;
         }
 
