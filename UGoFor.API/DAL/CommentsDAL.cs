@@ -35,8 +35,8 @@ namespace UGoFor.API.DAL
         {
             return new CommentsModel
             {
-                Username = "ugofor",
-                Comment = "hi",
+                Username = "ugoforadmin",
+                Comment = "Rave a Crave!",
                 ProfileUrl = "img/craveprofile.jpg"
             };
         }
