@@ -14,9 +14,16 @@ namespace UGoFor.API.Models
         public string Action { get; set; }
         public string Value { get; set; }
 
-        public void InsertAction(ActionModel sentAction)
+        public void PostAction(ActionModel sentAction)
         {
-            new ActionDAL().InsertAction(sentAction);
+            if (sentAction.Equals("+Follow"))
+            {
+                new ActionDAL().InsertAction(sentAction);
+            }
+            else if (sentAction.Equals("Unfollow"))
+            {
+                new ActionDAL().DeleteAction(sentAction);
+            }
         }
 
         public ActionModel FromDataReader(IDataReader dr)

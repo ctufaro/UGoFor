@@ -12,7 +12,7 @@ namespace UGoFor.API.RESTControllers
     {
         public void Post(ActionModel sentAction)
         {
-            new ActionModel().InsertAction(sentAction);
+            new ActionModel().PostAction(sentAction);
         }
     }
 }

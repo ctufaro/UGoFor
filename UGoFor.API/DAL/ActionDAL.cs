@@ -20,5 +20,17 @@ namespace UGoFor.API.DAL
 
             ExecuteSPNonReturnData("InsertAction", parameters);
         }
+
+        public void DeleteAction(ActionModel sentAction)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", sentAction.UserId),
+                new SqlParameter("@ACTION", sentAction.Action),
+                new SqlParameter("@VALUE", sentAction.Value),
+            };
+
+            ExecuteSPNonReturnData("DeleteAction", parameters);
+        }
     }
 }
