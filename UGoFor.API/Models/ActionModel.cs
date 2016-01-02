@@ -16,11 +16,11 @@ namespace UGoFor.API.Models
 
         public void PostAction(ActionModel sentAction)
         {
-            if (sentAction.Equals("+Follow"))
+            if (sentAction.Action.Equals("+Follow"))
             {
                 new ActionDAL().InsertAction(sentAction);
             }
-            else if (sentAction.Equals("Unfollow"))
+            else if (sentAction.Action.Equals("Unfollow"))
             {
                 new ActionDAL().DeleteAction(sentAction);
             }
