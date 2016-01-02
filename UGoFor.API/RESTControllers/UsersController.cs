@@ -10,9 +10,9 @@ namespace UGoFor.API.RESTControllers
 {
     public class UsersController : ApiController
     {
-        public IEnumerable<UsersModel> Get(int userId)
+        public IEnumerable<UsersModel> Get(int id)
         {
-            return new UsersModel().SelectAllUsers(userId);
+            return new UsersModel().SelectAllUsers(id);
         }
     }
 }
