@@ -217,6 +217,7 @@
     <Compile Include="RESTControllers\LoginController.cs" />
     <Compile Include="RESTControllers\PostsController.cs" />
     <Compile Include="Extensions\ExtensionMethods.cs" />
+    <Compile Include="RESTControllers\UsersController.cs" />
     <Compile Include="Services\BlobService.cs" />
   </ItemGroup>
   <ItemGroup>
