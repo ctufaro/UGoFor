@@ -22,6 +22,7 @@ namespace UGoFor.API.Models
             }
             else if (sentAction.Action.Equals("unfollow"))
             {
+                sentAction.Action = "follow";
                 new ActionDAL().DeleteAction(sentAction);
             }
         }
