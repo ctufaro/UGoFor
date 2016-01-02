@@ -26,6 +26,18 @@ namespace UGoFor.API.Models
                 sentAction.Action = "yum";
                 new ActionDAL().DeleteAction(sentAction);
             }
+            else if (sentAction.Action.Equals("yum"))
+            {
+                new ActionDAL().InsertAction(sentAction);
+                sentAction.Action = "yuck";
+                new ActionDAL().DeleteAction(sentAction);
+            }
+            else if (sentAction.Action.Equals("yuck"))
+            {
+                new ActionDAL().InsertAction(sentAction);
+                sentAction.Action = "yum";
+                new ActionDAL().DeleteAction(sentAction);
+            }
             else if (sentAction.Action.Equals("unyuck"))
             {
                 sentAction.Action = "yuck";
