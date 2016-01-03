@@ -64,9 +64,9 @@ namespace UGoFor.API.Models
             new PostsDAL().UpdatePhotoPost(photoPost);
         }
 
-        public List<PostsModel> SelectAllUsersPosts()
+        public List<PostsModel> SelectAllUsersPosts(int userId)
         {
-            return new PostsDAL().SelectAllUsersPosts();
+            return new PostsDAL().SelectAllUsersPosts(userId);
         }
 
         public string RelativeTime(string timePosted)

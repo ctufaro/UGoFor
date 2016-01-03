@@ -15,8 +15,11 @@ namespace UGoFor.API
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}/{direction}",
-                defaults: new { id = RouteParameter.Optional, direction = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{direction}/{userid}",
+                defaults: new { id = RouteParameter.Optional, 
+                                direction = RouteParameter.Optional,
+                                userid = RouteParameter.Optional
+                              }
             );
 
             config.Routes.MapHttpRoute(

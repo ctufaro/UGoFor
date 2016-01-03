@@ -13,9 +13,14 @@ namespace UGoFor.API.DAL
         {
         }
 
-        public List<PostsModel> SelectAllUsersPosts()
+        public List<PostsModel> SelectAllUsersPosts(int userId)
         {
-            List<PostsModel> usersPosts = ExecuteSPReturnData<PostsModel>("SelectAllUsersPosts");
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERID", userId),
+            };
+
+            List<PostsModel> usersPosts = ExecuteSPReturnData<PostsModel>("SelectAllUsersPosts", parameters);
             return usersPosts;
         }
 

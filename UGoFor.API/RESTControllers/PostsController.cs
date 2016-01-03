@@ -15,21 +15,21 @@ namespace UGoFor.API.Controllers
         private int batchsize = 15;
         
         // GET: api/Posts
-        public IEnumerable<PostsModel> Get()
+        public IEnumerable<PostsModel> Get(int id)
         {
-            return new PostsModel().SelectAllUsersPosts().Take(batchsize).ToList();
+            return new PostsModel().SelectAllUsersPosts(id).Take(batchsize).ToList();
         }
 
         // GET: api/Posts/5
-        public IEnumerable<PostsModel> Get(int id, int direction)
+        public IEnumerable<PostsModel> Get(int id, int direction, int userid)
         {
             if (direction == 0)
             {
-                return new PostsModel().SelectAllUsersPosts().Where(x => x.PostId < id).Take(batchsize).ToList();
+                return new PostsModel().SelectAllUsersPosts(userid).Where(x => x.PostId < id).Take(batchsize).ToList();
             }
             else
             {
-                return new PostsModel().SelectAllUsersPosts().Where(x => (x.PostId > id));
+                return new PostsModel().SelectAllUsersPosts(userid).Where(x => (x.PostId > id));
             }
             
         }
