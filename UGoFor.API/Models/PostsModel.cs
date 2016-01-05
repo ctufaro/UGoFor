@@ -21,8 +21,8 @@ namespace UGoFor.API.Models
         public string Username { get; set; }
         public string Filter { get; set; }
         public string Guid { get; set; }
-        public bool Yummed { get; set; }
-        public bool Yucked { get; set; }
+        public int? Yummed { get; set; }
+        public int? Yucked { get; set; }
         public List<CommentsModel> PostComments { get; set; }
         private List<CommentsModel> _allcomments { get; set; }
 
@@ -45,8 +45,8 @@ namespace UGoFor.API.Models
             postsModel.Username = dr["Username"] is DBNull ? null : dr["Username"].ToString();
             postsModel.Filter = dr["Filter"] is DBNull ? null : dr["Filter"].ToString();
             postsModel.Guid = dr["Guid"] is DBNull ? null : dr["Guid"].ToString();
-            postsModel.Yucked = (DateTime.Now.Second % 2 == 0) ? true : false;
-            postsModel.Yummed = (DateTime.Now.Second % 2 != 0) ? true : false;
+            postsModel.Yucked = dr["Yucked"] is DBNull ? null : dr["Yucked"] as Int32?;
+            postsModel.Yummed = dr["Yummed"] is DBNull ? null : dr["Yummed"] as Int32?;
             postsModel.PostComments = _allcomments.Where(x => x.PostId == postsModel.PostId).ToList();
             if (postsModel.PostComments.Count == 0) { postsModel.PostComments.Add(CommentsDAL.GetInitPost()); }
             return postsModel;
