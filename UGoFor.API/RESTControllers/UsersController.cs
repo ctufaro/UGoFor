@@ -14,5 +14,10 @@ namespace UGoFor.API.RESTControllers
         {
             return new UsersModel().SelectAllUsers(id);
         }
+
+        public UsersModel SelectUser(int userid)
+        {
+            return new UsersModel().SelectUser(userid);
+        }
     }
 }
