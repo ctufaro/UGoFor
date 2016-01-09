@@ -5,15 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using UGoFor.API.Models;
-
 namespace UGoFor.API.RESTControllers
 {
-    public class UsersController : ApiController
+    public class ProfileController : ApiController
     {
-        public IEnumerable<UsersModel> Get(int id)
+        public UsersModel Get(int id)
         {
-            return new UsersModel().SelectAllUsers(id);
+            return new UsersModel().SelectUser(id);
         }
-
     }
 }
