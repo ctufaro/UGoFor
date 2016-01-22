@@ -16,7 +16,7 @@ namespace UGoFor.API.RESTControllers
         }
 
         [Route("api/profile/stats/{id}")]
-        public List<ProfileModel> SelectUserProfileStats(int id)
+        public List<ProfileModel> GetUserProfileStats(int id)
         {
             return new ProfileModel().SelectUserProfileStats(id);
         }
