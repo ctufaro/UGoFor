@@ -16,7 +16,7 @@ namespace UGoFor.API.DAL
                 new SqlParameter("@USERID", userId),
             };
 
-            List<ProfileModel> userProfileStats = ExecuteSPReturnData<ProfileModel>("SelectUsersProfileStats", parameters);
+            List<ProfileModel> userProfileStats = ExecuteSPReturnData<ProfileModel>("SelectUserProfileStats", parameters);
             return userProfileStats;
         }
     }
