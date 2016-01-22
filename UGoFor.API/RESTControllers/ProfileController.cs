@@ -9,13 +9,13 @@ namespace UGoFor.API.RESTControllers
 {
     public class ProfileController : ApiController
     {
-        [Route("profile/{id}")]
+        [Route("api/profile/{id}")]
         public UsersModel Get(int id)
         {
             return new UsersModel().SelectUser(id);
         }
 
-        [Route("profile/{id}/stats")]
+        [Route("api/profile/stats/{id}")]
         public int GetStats(int id)
         {
             return id * 100;
