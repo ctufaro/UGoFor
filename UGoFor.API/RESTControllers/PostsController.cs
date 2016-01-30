@@ -25,7 +25,7 @@ namespace UGoFor.API.Controllers
         {
             if (direction == 0)
             {
-                return new PostsModel().SelectAllUsersPosts(userid).Where(x => x.PostId < id).Take(batchsize).ToList().Where(x => x.Type != 2);
+                return new PostsModel().SelectAllUsersPosts(userid).Where(x => x.PostId < id).Take(batchsize).ToList();//.Where(x => x.Type != 2);
             }
             else
             {
