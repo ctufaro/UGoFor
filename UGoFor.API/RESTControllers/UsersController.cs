@@ -16,8 +16,8 @@ namespace UGoFor.API.RESTControllers
             return new UsersModel().SelectAllUsers(id);
         }
 
-        [Route("api/users/usernameexists/{name}")]
-        public bool UsernameExists(string name)
+        [Route("api/users/getusernameexists/{name}")]
+        public bool GetUsernameExists(string name)
         {
             return new UsersModel().SelectUserByName(name) != null;
         }
