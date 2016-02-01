@@ -32,5 +32,17 @@ namespace UGoFor.API.DAL
 
             return allUsers;
         }
+
+        public UsersModel SelectUserByName(string name)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@USERNAME", name),
+            };
+
+            List<UsersModel> allUsers = ExecuteSPReturnData<UsersModel>("SelectUserByName", parameters);
+
+            return allUsers.First();
+        }
     }
 }

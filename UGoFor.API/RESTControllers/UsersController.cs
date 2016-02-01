@@ -10,9 +10,16 @@ namespace UGoFor.API.RESTControllers
 {
     public class UsersController : ApiController
     {
+        [Route("api/users/{id}")]
         public IEnumerable<UsersModel> Get(int id)
         {
             return new UsersModel().SelectAllUsers(id);
+        }
+
+        [Route("api/users/usernameexists/{name}")]
+        public bool UsernameExists(string name)
+        {
+            return new UsersModel().SelectUserByName(name) != null;
         }
 
     }

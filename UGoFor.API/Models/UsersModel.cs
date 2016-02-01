@@ -25,6 +25,11 @@ namespace UGoFor.API.Models
             return usersModel;
         }
 
+        public UsersModel SelectUserByName(string name)
+        {
+            return new UsersDAL().SelectUserByName(name);
+        }
+
         public List<UsersModel> SelectAllUsers(int userId)
         {
             return new UsersDAL().SelectAllUsers(userId);
