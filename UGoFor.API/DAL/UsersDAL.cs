@@ -42,7 +42,14 @@ namespace UGoFor.API.DAL
 
             List<UsersModel> allUsers = ExecuteSPReturnData<UsersModel>("SelectUserByName", parameters);
 
-            return allUsers.First();
+            if (allUsers.Count == 0)
+            {
+                return null;
+            }
+            else 
+            {
+                return allUsers.First();
+            }
         }
     }
 }
