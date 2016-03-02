@@ -11,7 +11,12 @@ namespace UGoFor.API.DAL
     {
         public ApplicationModel SelectApplicationSetting(int id)
         {
-            List<ApplicationModel> applicationSettings = ExecuteSPReturnData<ApplicationModel>("SelectApplicationSetting");
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", id),
+            };
+
+            List<ApplicationModel> applicationSettings = ExecuteSPReturnData<ApplicationModel>("SelectApplicationSetting", parameters);
             return applicationSettings.FirstOrDefault();
         }
     }
