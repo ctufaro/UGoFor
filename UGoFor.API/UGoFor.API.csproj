@@ -187,6 +187,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\ApplicationDAL.cs" />
     <Compile Include="DAL\ActionDAL.cs" />
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\CommentsDAL.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\ActionModel.cs" />
     <Compile Include="Models\BlobsModel.cs" />
     <Compile Include="Models\CommentsModel.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="Models\SuggestionsModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESTControllers\ApplicationController.cs" />
     <Compile Include="RESTControllers\ActionController.cs" />
     <Compile Include="RESTControllers\AlexaController.cs" />
     <Compile Include="RESTControllers\BlobsController.cs" />
