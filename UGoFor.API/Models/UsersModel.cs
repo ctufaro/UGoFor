@@ -13,7 +13,7 @@ namespace UGoFor.API.Models
         public string ProfileUrl { get; set; }
         public string Email { get; set; }
         public int? Followed { get; set; }
-        //public int? Blocked { get; set; }
+        public int? Blocked { get; set; }
 
         public UsersModel FromDataReader(System.Data.IDataReader dr)
         {
