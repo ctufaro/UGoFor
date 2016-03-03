@@ -23,7 +23,7 @@ namespace UGoFor.API.Models
             usersModel.ProfileUrl = dr["ProfileUrl"] is DBNull ? null : dr["ProfileUrl"].ToString();
             usersModel.Email = dr["ProfileUrl"] is DBNull ? null : dr["Email"].ToString();
             usersModel.Followed = dr["Followed"] is DBNull ? null : dr["Followed"] as Int32?;
-            //usersModel.Blocked = dr["Blocked"] is DBNull ? null : dr["Blocked"] as Int32?;
+            usersModel.Blocked = dr["Blocked"] is DBNull ? null : dr["Blocked"] as Int32?;
             return usersModel;
         }
 
