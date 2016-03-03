@@ -13,7 +13,7 @@ namespace UGoFor.API.Models
         public string ProfileUrl { get; set; }
         public string Email { get; set; }
         public int? Followed { get; set; }
-        public int? Blocked { get; set; }
+        //public int? Blocked { get; set; }
 
         public UsersModel FromDataReader(System.Data.IDataReader dr)
         {
@@ -23,7 +23,7 @@ namespace UGoFor.API.Models
             usersModel.ProfileUrl = dr["ProfileUrl"] is DBNull ? null : dr["ProfileUrl"].ToString();
             usersModel.Email = dr["ProfileUrl"] is DBNull ? null : dr["Email"].ToString();
             usersModel.Followed = dr["Followed"] is DBNull ? null : dr["Followed"] as Int32?;
-            usersModel.Blocked = dr["Blocked"] is DBNull ? null : dr["Blocked"] as Int32?;
+            //usersModel.Blocked = dr["Blocked"] is DBNull ? null : dr["Blocked"] as Int32?;
             return usersModel;
         }
 
