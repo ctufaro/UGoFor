@@ -21,6 +21,11 @@ namespace UGoFor.API.Models
                 sentAction.Action = "follow";
                 new ActionDAL().DeleteAction(sentAction);
             }
+            if (sentAction.Action.Equals("unblock"))
+            {
+                sentAction.Action = "block";
+                new ActionDAL().DeleteAction(sentAction);
+            }
             else if (sentAction.Action.Equals("unyum"))
             {
                 sentAction.Action = "yum";
