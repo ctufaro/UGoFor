@@ -21,7 +21,7 @@ namespace UGoFor.API.Models
                 sentAction.Action = "follow";
                 new ActionDAL().DeleteAction(sentAction);
             }
-            if (sentAction.Action.Equals("unblock"))
+            else if (sentAction.Action.Equals("unblock"))
             {
                 sentAction.Action = "block";
                 new ActionDAL().DeleteAction(sentAction);
