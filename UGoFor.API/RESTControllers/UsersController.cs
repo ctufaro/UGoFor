@@ -22,5 +22,10 @@ namespace UGoFor.API.RESTControllers
             return new UsersModel().SelectUserByName(name) != null;
         }
 
+        public int Post(SignUpModel sentNewUser)
+        {
+            return new SignUpModel().InsertNewUser(sentNewUser);
+        }
+
     }
 }
