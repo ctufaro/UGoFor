@@ -117,7 +117,7 @@ namespace UGoFor.API.Models
             if (delta < 12 * MONTH)
             {
                 int months = Convert.ToInt32(Math.Floor((double)ts.Days / 30));
-                return months + "m";
+                return months + "mth";
             }
             else
             {
