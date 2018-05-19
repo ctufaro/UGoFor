@@ -16,9 +16,9 @@ namespace UGoFor.API.RESTControllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string[] submitaddr)
+        public string Post([FromBody] string[] submitaddr)
         {
-            new DepositAddr().InsertDepositAddr(submitaddr);
+            return new DepositAddr().InsertDepositAddr(submitaddr);
         }
     }
 }

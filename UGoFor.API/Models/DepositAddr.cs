@@ -35,7 +35,7 @@ namespace UGoFor.API.Models
             return new DepositAddrDAL().DepositAddrExists(depositAddr);
         }
 
-        public int InsertDepositAddr(string[] submittedAddr)
+        public string InsertDepositAddr(string[] submittedAddr)
         {
             DateTime submittedOn = DateTime.Now;
             DepositAddrDAL depoDAL = new DepositAddrDAL();
@@ -51,7 +51,7 @@ namespace UGoFor.API.Models
                     depoDAL.InsertDepositAddr(sAddr, depositedAddr, submittedOn);
             }
 
-            return 0;
+            return depositedAddr;
         }
         
         public List<DepositAddr> SelectAllDepositAddr()
