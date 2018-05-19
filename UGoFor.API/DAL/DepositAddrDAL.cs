@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -17,13 +18,20 @@ namespace UGoFor.API.DAL
 
         public int DepositAddrExists(string depositAddr)
         {
+            int retval = 0;
+            
             SqlParameter[] parameters = new SqlParameter[]
             {
               new SqlParameter("@DEPOSITADDR", depositAddr),
             };
+            DataTable dt = ExecuteSPReturnDataTable("SelectDepositAddressExists", parameters);
 
-            string retval = ExecuteSPReturnDataTable("SelectDepositAddressExists", parameters).Rows[0][0].ToString();
-            return Int32.Parse(retval);
+            if (dt.Rows.Count == 0)
+                retval = 0;
+            else
+                retval = Int32.Parse(dt.Rows[0][0].ToString());
+
+            return retval;
         }
 
         public void InsertDepositAddr(string submittedAddr, string depositedAddr, DateTime submittedOn)
