@@ -35,15 +35,21 @@ namespace UGoFor.API.Models
             return new DepositAddrDAL().DepositAddrExists(depositAddr);
         }
 
-        public int InsertDepositAddr(string submittedAddr)
+        public int InsertDepositAddr(string[] submittedAddr)
         {
+            DateTime submittedOn = DateTime.Now;
+            DepositAddrDAL depoDAL = new DepositAddrDAL();
             string depositedAddr = GenerateRandomName();
             while (DepositAddrExists(depositedAddr) == 1)
             {
                 depositedAddr = GenerateRandomName();
             }
 
-            new DepositAddrDAL().InsertDepositAddr(submittedAddr, depositedAddr);
+            foreach (string sAddr in submittedAddr)
+            {
+                depoDAL.InsertDepositAddr(sAddr, depositedAddr, submittedOn);
+            }
+
             return 0;
         }
         

@@ -26,13 +26,14 @@ namespace UGoFor.API.DAL
             return Int32.Parse(retval);
         }
 
-        public void InsertDepositAddr(string submittedAddr, string depositedAddr)
+        public void InsertDepositAddr(string submittedAddr, string depositedAddr, DateTime submittedOn)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@SUBMITTEDADDR", submittedAddr),
                 new SqlParameter("@DEPOSITADDR", depositedAddr),
                 new SqlParameter("@STATUS", 1),
+                new SqlParameter("@SUBMITTEDON",submittedOn),
             };
 
             ExecuteSPNonReturnData("InsertNewDepositAddress", parameters);
