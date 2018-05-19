@@ -31,7 +31,7 @@ namespace UGoFor.API.DAL
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@SUBMITTEDADDR", submittedAddr),
-                new SqlParameter("@DEPOSITADDRL", depositedAddr),
+                new SqlParameter("@DEPOSITADDR", depositedAddr),
                 new SqlParameter("@STATUS", 1),
             };
 
