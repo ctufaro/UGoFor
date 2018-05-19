@@ -15,14 +15,9 @@ namespace UGoFor.API.RESTControllers
             return new DepositAddr().SelectAllDepositAddr();
         }
 
-        public int Get(string depositAddr)
+        public int Post(string submitaddr)
         {
-            return new DepositAddr().DepositAddrExists(depositAddr);
-        }
-
-        public int Post(DepositAddr depositAddr)
-        {
-            return new DepositAddr().InsertDepositAddr(depositAddr);
+            return new DepositAddr().InsertDepositAddr(submitaddr);
         }
     }
 }

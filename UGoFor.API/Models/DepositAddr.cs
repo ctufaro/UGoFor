@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using UGoFor.API.DAL;
+using RandomNameGeneratorLibrary;
 
 namespace UGoFor.API.Models
 {
@@ -29,24 +30,27 @@ namespace UGoFor.API.Models
             return depositAddr;
         }
 
-
         public int DepositAddrExists(string depositAddr)
         {
             return new DepositAddrDAL().DepositAddrExists(depositAddr);
         }
 
-
-        public int InsertDepositAddr(DepositAddr depositAddr)
+        public int InsertDepositAddr(string submittedAddr)
         {
-            new DepositAddrDAL().InsertDepositAddr(depositAddr);
+            string depositedAddr = GenerateRandomName();
+            new DepositAddrDAL().InsertDepositAddr(submittedAddr, depositedAddr);
             return 0;
         }
-
+        
         public List<DepositAddr> SelectAllDepositAddr()
         {
             return new DepositAddrDAL().SelectAllDepositAddr();
         }
-    }
 
+        private string GenerateRandomName()
+        {
+            return new PersonNameGenerator().GenerateRandomFirstAndLastName();            
+        }
+    }
 
 }
