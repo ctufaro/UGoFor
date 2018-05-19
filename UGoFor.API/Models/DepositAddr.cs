@@ -30,7 +30,7 @@ namespace UGoFor.API.Models
             return depositAddr;
         }
 
-        public int DepositAddrExists(string depositAddr)
+        private int DepositAddrExists(string depositAddr)
         {
             return new DepositAddrDAL().DepositAddrExists(depositAddr);
         }
@@ -38,6 +38,11 @@ namespace UGoFor.API.Models
         public int InsertDepositAddr(string submittedAddr)
         {
             string depositedAddr = GenerateRandomName();
+            while (DepositAddrExists(depositedAddr) == 1)
+            {
+                depositedAddr = GenerateRandomName();
+            }
+
             new DepositAddrDAL().InsertDepositAddr(submittedAddr, depositedAddr);
             return 0;
         }
