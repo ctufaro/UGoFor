@@ -192,6 +192,7 @@
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\CommentsDAL.cs" />
     <Compile Include="DAL\CraveDAL.cs" />
+    <Compile Include="DAL\DepositAddrDAL.cs" />
     <Compile Include="DAL\DeviceDAL.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\PostsDAL.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Models\BlobsModel.cs" />
     <Compile Include="Models\CommentsModel.cs" />
     <Compile Include="Models\CraveModel.cs" />
+    <Compile Include="Models\DepositAddr.cs" />
     <Compile Include="Models\DeviceModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PostsModel.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="RESTControllers\BlobsController.cs" />
     <Compile Include="RESTControllers\CommentsController.cs" />
     <Compile Include="RESTControllers\CraveController.cs" />
+    <Compile Include="RESTControllers\DepositAddressController.cs" />
     <Compile Include="RESTControllers\DeviceController.cs" />
     <Compile Include="RESTControllers\LoginController.cs" />
     <Compile Include="RESTControllers\PostsController.cs" />
