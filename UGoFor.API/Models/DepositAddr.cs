@@ -47,7 +47,8 @@ namespace UGoFor.API.Models
 
             foreach (string sAddr in submittedAddr)
             {
-                depoDAL.InsertDepositAddr(sAddr, depositedAddr, submittedOn);
+                if(!string.IsNullOrEmpty(sAddr))
+                    depoDAL.InsertDepositAddr(sAddr, depositedAddr, submittedOn);
             }
 
             return 0;
