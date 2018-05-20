@@ -17,6 +17,7 @@ namespace UGoFor.API.Models
         public string DepositAddress { get; set; }
         public int? Status { get; set; }
         public DateTime? StatusUpdate { get; set; }
+        public string AmountToSend { get; set; }
 
         public DepositAddr FromDataReader(IDataReader dr)
         {
@@ -27,6 +28,7 @@ namespace UGoFor.API.Models
             depositAddr.DepositAddress = dr["DepositAddr"] is DBNull ? null : dr["DepositAddr"].ToString();
             depositAddr.Status = dr["Status"] is DBNull ? null : dr["Status"] as Int32?;
             depositAddr.StatusUpdate = dr["StatusUpdate"] is DBNull ? null : dr["StatusUpdate"] as DateTime?;
+            depositAddr.AmountToSend = dr["AmountToSend"] is DBNull ? null : dr["AmountToSend"].ToString();
             return depositAddr;
         }
 
@@ -54,15 +56,26 @@ namespace UGoFor.API.Models
             return depositedAddr;
         }
         
-        public List<DepositAddr> SelectAllDepositAddr()
+        public List<DepositAddr> SelectAllDepositAddr(int status)
         {
-            return new DepositAddrDAL().SelectAllDepositAddr();
+            return new DepositAddrDAL().SelectAllDepositAddr(status);
         }
 
         private string GenerateRandomName()
         {
             return new PersonNameGenerator().GenerateRandomFirstAndLastName();            
         }
+
+        public void UpdateDepositAddress(SimpleSend submitaddr)
+        {
+            new DepositAddrDAL().UpdateDepositAddress(submitaddr);
+        }
     }
 
+    public class SimpleSend
+    {
+        public string DepositAddress;
+        public string Amount;
+        public int Status;
+    }
 }

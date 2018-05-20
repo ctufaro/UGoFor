@@ -10,9 +10,9 @@ namespace UGoFor.API.RESTControllers
 {
     public class DepositAddressController : ApiController
     {
-        public IEnumerable<DepositAddr> Get()
+        public IEnumerable<DepositAddr> Get(int status)
         {
-            return new DepositAddr().SelectAllDepositAddr();
+            return new DepositAddr().SelectAllDepositAddr(status);
         }
 
         [HttpPost]
@@ -20,5 +20,13 @@ namespace UGoFor.API.RESTControllers
         {
             return new DepositAddr().InsertDepositAddr(submitaddr);
         }
+
+        [HttpPut]
+        public void Put(SimpleSend submitaddr)
+        {
+            new DepositAddr().UpdateDepositAddress(submitaddr);
+        }
     }
+
+
 }

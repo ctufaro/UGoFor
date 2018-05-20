@@ -10,9 +10,13 @@ namespace UGoFor.API.DAL
 {
     public class DepositAddrDAL : BaseDAL
     {
-        public List<DepositAddr> SelectAllDepositAddr()
+        public List<DepositAddr> SelectAllDepositAddr(int status)
         {
-            List<DepositAddr> depositAddresses = ExecuteSPReturnData<DepositAddr>("SelectAllDepositAddress");
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+              new SqlParameter("@STATUS", status),
+            };
+            List<DepositAddr> depositAddresses = ExecuteSPReturnData<DepositAddr>("SelectAllDepositAddress", parameters);
             return depositAddresses;
         }
 
@@ -45,6 +49,19 @@ namespace UGoFor.API.DAL
             };
 
             ExecuteSPNonReturnData("InsertNewDepositAddress", parameters);
+        }
+        
+        public void UpdateDepositAddress(SimpleSend submitaddr)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@DEPOSITADDR", submitaddr.DepositAddress),
+                new SqlParameter("@AMOUNT", submitaddr.Amount),
+                new SqlParameter("@UPDATETIME", DateTime.Now),
+                new SqlParameter("@STATUS", submitaddr.Status),
+            };
+
+            ExecuteSPNonReturnData("UpdateDepositAddress", parameters);
         }
     }
 }
